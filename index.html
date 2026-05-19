@@ -104,6 +104,145 @@
       .brand-image { margin: 0 auto; }
       .toolbar { justify-content: center; }
     }
+
+
+    /* ===== AJUSTES DE RESPONSIVIDADE PARA SMARTPHONE ===== */
+    img, svg, video, canvas { max-width: 100%; height: auto; }
+    .card, .topbar, .install-box { overflow: hidden; }
+
+    @media (max-width: 640px) {
+      html { -webkit-text-size-adjust: 100%; }
+      body { background: #08101c; }
+      .wrap { width: 100%; max-width: 100%; padding: 10px; }
+      .topbar {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 14px;
+        border-radius: 18px;
+        text-align: center;
+      }
+      .brand-image {
+        width: 100%;
+        max-width: 260px;
+        height: auto;
+        aspect-ratio: auto;
+        object-fit: contain;
+        padding: 10px;
+        border-radius: 16px;
+        background: #fff;
+        margin: 0 auto;
+      }
+      .headline h1 {
+        font-size: clamp(1.05rem, 5.2vw, 1.35rem);
+        line-height: 1.25;
+        word-break: normal;
+      }
+      .headline p {
+        font-size: .92rem;
+      }
+      .badge {
+        width: 100%;
+        font-size: .82rem;
+        line-height: 1.35;
+        white-space: normal;
+      }
+      .toolbar {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin: 12px 0 14px;
+      }
+      button, .file-label {
+        width: 100%;
+        min-height: 48px;
+        padding: 13px 14px;
+        font-size: 1rem;
+        border-radius: 14px;
+      }
+      .install-box {
+        font-size: .9rem;
+        line-height: 1.45;
+        padding: 12px;
+        margin-bottom: 12px;
+      }
+      .grid { gap: 12px; }
+      .grid-2, .grid-3, .checklist { grid-template-columns: 1fr !important; }
+      .card {
+        padding: 14px;
+        border-radius: 16px;
+      }
+      .section-title {
+        font-size: 1.05rem;
+        line-height: 1.3;
+      }
+      .field { gap: 6px; }
+      .field label { font-size: .92rem; }
+      input, textarea, select {
+        font-size: 16px;
+        min-height: 46px;
+        padding: 12px;
+        border-radius: 12px;
+      }
+      textarea { min-height: 110px; }
+      .check-item {
+        align-items: flex-start;
+        line-height: 1.35;
+        padding: 12px;
+      }
+      .check-item input {
+        flex: 0 0 20px;
+        width: 20px;
+        height: 20px;
+        margin-top: 1px;
+      }
+
+      /* Tabela vira cards no smartphone para não estourar a largura da tela */
+      .table-wrap { overflow: visible; }
+      table, thead, tbody, tr, th, td { display: block; width: 100%; min-width: 0; }
+      table { min-width: 0; border-collapse: separate; border-spacing: 0; }
+      thead { display: none; }
+      tbody tr {
+        margin: 0 0 14px;
+        padding: 12px;
+        border: 1px solid #263754;
+        border-radius: 14px;
+        background: rgba(255,255,255,.025);
+      }
+      td {
+        border-bottom: 0;
+        padding: 7px 0;
+      }
+      td:first-child {
+        color: #9ddcff;
+        font-weight: 800;
+        padding-top: 0;
+        margin-bottom: 4px;
+      }
+      td:not(:first-child)::before {
+        content: "";
+        display: block;
+        color: #a9b6c9;
+        font-size: .82rem;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+      tr td:nth-child(2)::before { content: "Fase A"; }
+      tr td:nth-child(3)::before { content: "Fase B"; }
+      tr td:nth-child(4)::before { content: "Fase C"; }
+      td input { width: 100%; }
+      .footer-note {
+        font-size: .82rem;
+        padding: 0 8px 12px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .wrap { padding: 8px; }
+      .card, .topbar { padding: 12px; }
+      .headline h1 { font-size: 1rem; }
+      button, .file-label { font-size: .94rem; }
+    }
+
     @media print {
       body { background: #fff; color: #000; }
       .toolbar, .install-box, .status, .footer-note { display: none !important; }
@@ -137,7 +276,7 @@
     </div>
 
     <div class="install-box">
-      <strong>Observação importante:</strong> um site em HTML não consegue salvar arquivos diretamente na Área de Trabalho sem sua permissão. Nesta versão corrigida, ao gerar o PDF ou salvar os dados, o navegador abre a caixa de diálogo para você escolher a pasta, inclusive a <strong>Área de Trabalho</strong>, quando o navegador suportar esse recurso.
+      <strong>Observação importante:</strong> no smartphone, o PDF será salvo normalmente na pasta <strong>Downloads</strong> ou no local escolhido pelo navegador. Após publicar no Vercel, abra o link no Chrome e use <strong>Adicionar à tela inicial</strong> para instalar o app.
     </div>
 
     <div id="status" class="status"></div>
