@@ -2,279 +2,472 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Relatório de Manutenção de Geradores - TECNO ACRE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Relatório de Manutenção - TECNO ACRE</title>
   <meta name="theme-color" content="#0f172a" />
   <link rel="manifest" href="./manifest.json" />
   <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96.png" />
   <style>
-    :root {
-      --bg: #0b1220;
-      --panel: #101a2d;
-      --panel-2: #0f172a;
-      --card: #172338;
-      --line: #24334d;
-      --text: #e5edf8;
-      --muted: #a9b6c9;
-      --accent: #ff8a00;
-      --accent-2: #29b6f6;
-      --ok: #22c55e;
-      --shadow: 0 10px 24px rgba(0,0,0,.28);
-      --radius: 18px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: linear-gradient(180deg, #08101c, #101827); color: var(--text); }
-    body { min-height: 100vh; }
-    .wrap { max-width: 1200px; margin: 0 auto; padding: 24px; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(180deg, #08101c, #101827);
+      color: #e5edf8;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px;
+    }
+
+    /* HEADER */
     .topbar {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       align-items: center;
+      text-align: center;
       background: linear-gradient(135deg, #0f172a, #16243a);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      padding: 24px;
-      margin-bottom: 24px;
+      border: 1px solid #24334d;
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.28);
     }
+
     .brand-image {
-      width: 100%; max-width: 110px; aspect-ratio: 1/1; object-fit: contain;
-      border-radius: 16px; background: #fff; padding: 8px; border: 1px solid #1f2e47;
-      box-shadow: 0 8px 20px rgba(0,0,0,.25);
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #fff;
+      padding: 6px;
+      border: 1px solid #1f2e47;
     }
-    .headline h1 { margin: 0 0 8px; font-size: 1.85rem; letter-spacing: -0.02em; }
-    .headline p { margin: 0; color: var(--muted); line-height: 1.5; font-size: 1rem; }
-    .badge { display:inline-block; margin-top: 12px; padding: 6px 14px; border-radius: 999px; background: rgba(41,182,246,.1); color:#8edcff; font-size:.85rem; border:1px solid rgba(41,182,246,.3); font-weight: 600; }
-    
+
+    .headline h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .headline p {
+      font-size: 0.9rem;
+      color: #a9b6c9;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(41,182,246,.1);
+      color: #8edcff;
+      font-size: 0.75rem;
+      border: 1px solid rgba(41,182,246,.3);
+      font-weight: 600;
+    }
+
+    /* TOOLBAR */
     .toolbar {
-      display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 12px 0 16px;
     }
+
     button, .file-label {
-      appearance: none; border: 0; cursor: pointer; color: white;
-      background: linear-gradient(135deg, #ff8a00, #ff6a00); padding: 12px 20px;
-      border-radius: 12px; font-weight: 700; box-shadow: var(--shadow); font-size: .95rem;
-      transition: transform 0.2s, filter 0.2s;
-      display: flex; align-items: center; justify-content: center;
-      min-height: 44px;
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      color: white;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: filter 0.2s, transform 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,.2);
+      white-space: nowrap;
     }
-    button:hover, .file-label:hover { filter: brightness(1.1); transform: translateY(-1px); }
-    button:active { transform: translateY(0); }
-    button.secondary, .file-label.secondary { background: linear-gradient(135deg, #1d4ed8, #0ea5e9); }
-    button.ghost { background: #172338; border: 1px solid #2a3a57; }
-    button.success { background: linear-gradient(135deg, #16a34a, #22c55e); }
-    button:disabled { opacity:.55; cursor:not-allowed; }
-    
-    /* Ocultar botões técnicos por padrão */
-    button.tech-only { display: none !important; }
-    .file-label.tech-only { display: none !important; }
-    
-    input, textarea, select {
-      width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid #2c3a56;
-      background: #0f172a; color: var(--text); font-size: 1rem; outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
+
+    button:active, .file-label:active {
+      transform: scale(0.98);
     }
-    textarea { min-height: 100px; resize: vertical; }
-    input:focus, textarea:focus, select:focus { border-color: var(--accent-2); box-shadow: 0 0 0 3px rgba(41,182,246,.15); }
-    
-    .grid { display: grid; gap: 20px; }
-    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    
+
+    button.success {
+      background: linear-gradient(135deg, #16a34a, #22c55e);
+    }
+
+    button.secondary {
+      background: linear-gradient(135deg, #1d4ed8, #0ea5e9);
+    }
+
+    button.ghost {
+      background: #172338;
+      border: 1px solid #2a3a57;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Ocultar botões técnicos */
+    button.tech-only, .file-label.tech-only {
+      display: none !important;
+    }
+
+    /* STATUS BOX */
+    .status {
+      display: none;
+      margin: 12px 0;
+      padding: 12px;
+      border-radius: 10px;
+      background: rgba(34,197,94,.15);
+      color: #b6f7c8;
+      border: 1px solid rgba(34,197,94,.3);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    /* INSTALL BOX */
+    .install-box {
+      display: block;
+      margin-bottom: 16px;
+      padding: 12px;
+      border-radius: 10px;
+      background: rgba(255,138,0,.08);
+      border: 1px solid rgba(255,138,0,.2);
+      color: #ffd6a3;
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .install-box strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* FORM */
+    .grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .grid-2 {
+      grid-template-columns: 1fr;
+    }
+
+    .grid-3 {
+      grid-template-columns: 1fr;
+    }
+
     .card {
       background: linear-gradient(180deg, #111b2f, #0e1628);
-      border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow);
+      border: 1px solid #24334d;
+      border-radius: 12px;
+      padding: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.15);
+      margin-bottom: 12px;
     }
-    .section-title { margin: 0 0 18px; font-size: 1.25rem; color: #fff; font-weight: 700; display: flex; align-items: center; gap: 10px; }
-    .section-title span { color: var(--accent-2); font-size: 1.1rem; opacity: 0.8; }
-    
-    .field { display: flex; flex-direction: column; gap: 8px; }
-    .field label { color: #dfe8f5; font-weight: 600; font-size: .95rem; }
-    
-    .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
-    table { width: 100%; border-collapse: collapse; min-width: 680px; }
-    th, td { padding: 14px; border-bottom: 1px solid #263754; text-align: left; }
-    th { color: #9ddcff; background: rgba(41,182,246,.08); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; }
-    td input { background: transparent; border: none; padding: 4px; border-bottom: 1px solid transparent; border-radius: 0; }
-    td input:focus { border-bottom-color: var(--accent-2); box-shadow: none; }
-    
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title span {
+      color: #29b6f6;
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .field:last-child {
+      margin-bottom: 0;
+    }
+
+    .field label {
+      color: #dfe8f5;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #2c3a56;
+      background: #0f172a;
+      color: #e5edf8;
+      font-size: 16px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+      min-height: 40px;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #29b6f6;
+      box-shadow: 0 0 0 2px rgba(41,182,246,.1);
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    /* TABELA RESPONSIVA */
+    .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 0 -14px;
+      padding: 0 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    thead {
+      display: none;
+    }
+
+    tbody tr {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding: 12px;
+      border: 1px solid #24334d;
+      border-radius: 10px;
+      background: rgba(255,255,255,.02);
+    }
+
+    td {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 8px;
+      align-items: center;
+      border: none;
+      padding: 0;
+    }
+
+    td:first-child {
+      grid-column: 1 / -1;
+      font-weight: 700;
+      color: #29b6f6;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(41,182,246,.2);
+    }
+
+    td:first-child::after {
+      content: '';
+    }
+
+    td input {
+      padding: 8px;
+      font-size: 14px;
+      text-align: right;
+    }
+
+    /* CHECKLIST */
     .checklist {
-      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
     }
+
     .check-item {
-      display: flex; gap: 12px; align-items: center; background: rgba(255,255,255,.03);
-      border: 1px solid #21304a; border-radius: 14px; padding: 14px; cursor: pointer;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      background: rgba(255,255,255,.03);
+      border: 1px solid #21304a;
+      border-radius: 10px;
+      padding: 10px;
+      cursor: pointer;
       transition: background 0.2s;
-    }
-    .check-item:hover { background: rgba(255,255,255,.06); }
-    .check-item input { width: 20px; height: 20px; accent-color: #22c55e; cursor: pointer; margin: 0; flex-shrink: 0; }
-    
-    .status {
-      margin-top: 10px; padding: 14px; border-radius: 12px; background: rgba(34,197,94,.11);
-      color: #b6f7c8; border: 1px solid rgba(34,197,94,.25); display:none; font-weight: 600;
-    }
-    
-    .install-box {
-      margin-bottom: 24px; padding: 16px; border-radius: 14px; background: rgba(255,138,0,.08);
-      border: 1px solid rgba(255,138,0,.2); color: #ffd6a3; font-size: 0.95rem; line-height: 1.5;
-    }
-    
-    .footer-note { margin: 32px 0 16px; text-align: center; color: var(--muted); font-size: 0.9rem; opacity: 0.8; }
-
-    @media (max-width: 900px) {
-      .grid-2, .grid-3, .checklist { grid-template-columns: 1fr; }
-      .topbar { grid-template-columns: 1fr; text-align: center; }
-      .brand-image { margin: 0 auto; }
-      .toolbar { justify-content: center; }
+      min-height: 40px;
     }
 
-    @media (max-width: 768px) {
-      .wrap { padding: 16px; }
-      .topbar { padding: 20px; gap: 16px; }
-      .headline h1 { font-size: 1.5rem; }
-      .card { padding: 18px; }
-      .toolbar { gap: 10px; }
-      button, .file-label { padding: 11px 16px; font-size: 0.9rem; }
+    .check-item:active {
+      background: rgba(255,255,255,.08);
     }
 
-    @media (max-width: 640px) {
-      .wrap { padding: 12px; }
-      .topbar { 
-        grid-template-columns: 1fr; 
-        padding: 16px; 
-        gap: 12px; 
-        border-radius: 16px;
+    .check-item input {
+      width: 18px;
+      height: 18px;
+      min-height: auto;
+      accent-color: #22c55e;
+      cursor: pointer;
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .check-item label {
+      flex: 1;
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* FOOTER */
+    .footer-note {
+      text-align: center;
+      color: #a9b6c9;
+      font-size: 0.8rem;
+      margin: 24px 0 12px;
+      opacity: 0.7;
+    }
+
+    /* DESKTOP */
+    @media (min-width: 768px) {
+      .wrap {
+        padding: 24px;
       }
-      .brand-image { 
-        max-width: 90px; 
-        border-radius: 12px; 
+
+      .topbar {
+        flex-direction: row;
+        text-align: left;
+        gap: 24px;
+        padding: 24px;
       }
-      .headline h1 { 
-        font-size: clamp(1.3rem, 5vw, 1.6rem);
-        line-height: 1.2;
-        margin-bottom: 6px;
+
+      .brand-image {
+        width: 110px;
+        height: 110px;
+        flex-shrink: 0;
       }
-      .headline p { 
-        font-size: 0.9rem;
-        line-height: 1.4;
-      }
-      .badge {
-        font-size: 0.75rem;
-        padding: 5px 10px;
-        display: block;
-        text-align: center;
-        margin-top: 8px;
-      }
+
       .toolbar {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-        margin: 16px 0 20px;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 12px;
       }
+
       button, .file-label {
-        padding: 12px 12px;
-        font-size: 0.85rem;
-        min-height: 40px;
-        border-radius: 10px;
+        padding: 12px 16px;
+        font-size: 0.9rem;
       }
-      .install-box {
-        font-size: 0.85rem;
-        padding: 12px;
-        margin-bottom: 16px;
-        line-height: 1.4;
+
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
       }
-      .card { 
-        padding: 16px; 
-        border-radius: 14px;
-        margin-bottom: 12px;
+
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
       }
-      .section-title {
-        font-size: 1.1rem;
-        margin-bottom: 14px;
+
+      .card {
+        padding: 24px;
       }
-      .field { gap: 6px; }
-      .field label { font-size: 0.9rem; font-weight: 600; }
-      input, textarea, select {
-        font-size: 16px;
-        padding: 11px 12px;
-        border-radius: 10px;
-        min-height: 44px;
+
+      .checklist {
+        grid-template-columns: repeat(2, 1fr);
       }
-      textarea { min-height: 90px; }
+
       .check-item {
         padding: 12px;
-        border-radius: 12px;
-        gap: 10px;
       }
-      .check-item input { width: 18px; height: 18px; }
-      .checklist { gap: 10px; }
-      
-      /* Tabela responsiva para smartphone */
-      .table-wrap { border: none; overflow: visible; }
-      table, thead, tbody, tr, th, td { display: block; width: 100%; }
-      thead { display: none; }
-      tbody tr {
-        margin-bottom: 12px;
-        padding: 12px;
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        background: rgba(255,255,255,.02);
-      }
-      td {
-        border: none;
-        padding: 8px 0;
-        display: grid;
-        grid-template-columns: 100px 1fr;
-        gap: 8px;
-        align-items: center;
-      }
-      td::before {
-        content: attr(data-label);
-        font-weight: 700;
-        color: var(--accent-2);
-        font-size: 0.8rem;
-        text-transform: uppercase;
-      }
-      td input {
-        text-align: right;
-        padding: 6px;
-      }
-      .footer-note {
-        font-size: 0.8rem;
-        padding: 0 8px;
-        margin: 24px 0 12px;
-      }
-    }
 
-    @media (max-width: 480px) {
-      .wrap { padding: 8px; }
-      .topbar { padding: 12px; }
-      .headline h1 { font-size: 1.2rem; }
-      .headline p { font-size: 0.85rem; }
-      .card { padding: 14px; }
-      .toolbar { grid-template-columns: 1fr; }
-      button, .file-label { font-size: 0.8rem; padding: 10px; }
-      .section-title { font-size: 1rem; }
-      .field label { font-size: 0.85rem; }
-      input, textarea, select { font-size: 15px; padding: 10px; }
+      /* Tabela desktop */
+      thead {
+        display: table-header-group;
+      }
+
+      th {
+        padding: 12px;
+        background: rgba(41,182,246,.08);
+        color: #9ddcff;
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        border-bottom: 1px solid #263754;
+      }
+
+      tbody tr {
+        display: table-row;
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: transparent;
+      }
+
+      td {
+        display: table-cell;
+        padding: 12px;
+        border-bottom: 1px solid #263754;
+        grid-template-columns: none;
+        gap: 0;
+      }
+
+      td:first-child {
+        grid-column: auto;
+        border: none;
+        margin: 0;
+        padding: 12px;
+        font-weight: normal;
+        color: inherit;
+        font-size: inherit;
+      }
+
+      td input {
+        text-align: left;
+      }
     }
 
     @media print {
       body { background: #fff; color: #000; }
       .toolbar, .install-box, .status, .footer-note { display: none !important; }
-      .wrap { max-width: 100%; padding: 0; }
+      .wrap { padding: 0; }
       .topbar, .card { box-shadow: none; border: 1px solid #ddd; background: #fff; color: #000; }
-      .brand-image { filter: grayscale(1); border: 1px solid #ccc; }
-      .headline p, .field label, .section-title, .section-title span { color: #000 !important; }
+      .brand-image { filter: grayscale(1); }
       input, textarea, select { color: #000; background: #fff; border: 1px solid #bbb; }
-      .check-item { border: 1px solid #ddd; background: #fff; color: #000; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="topbar">
-      <img class="brand-image" src="./brand-logo.png" alt="TECNO ACRE Logo" />
+      <img class="brand-image" src="./brand-logo.png" alt="TECNO ACRE" />
       <div class="headline">
         <h1>Relatório de Manutenção</h1>
         <p>Sistema de registro de manutenções preventivas e corretivas em grupos geradores da <strong>TECNO ACRE</strong>.</p>
@@ -286,78 +479,72 @@
       <button class="success" id="btnPdf">Gerar PDF</button>
       <button class="secondary" id="btnPrint">Imprimir</button>
       <button class="ghost" id="btnClear">Limpar</button>
-      <button class="secondary" id="btnInstall" hidden>Instalar App</button>
-      
-      <!-- Botões técnicos (ocultos para cliente) -->
-      <button class="ghost tech-only" id="btnSaveJson">Exportar Dados</button>
-      <label class="file-label ghost tech-only" for="fileImport">Importar Dados</label>
+      <button class="secondary" id="btnInstall" hidden>Instalar</button>
+      <button class="ghost tech-only" id="btnSaveJson">Exportar</button>
+      <label class="file-label ghost tech-only" for="fileImport">Importar</label>
       <input id="fileImport" type="file" accept="application/json" hidden />
     </div>
 
     <div class="install-box" id="installBox">
-      <strong>Dica:</strong> Instale este aplicativo na tela inicial do seu smartphone para acesso rápido.
+      <strong>Dica:</strong> Instale este app na tela inicial para acesso rápido.
     </div>
 
     <div id="status" class="status"></div>
 
     <form id="reportForm" class="grid">
-      <!-- 1. Informações Gerais -->
+      <!-- 01. Informações Gerais -->
       <section class="card">
         <h2 class="section-title"><span>01.</span> Informações Gerais</h2>
-        <div class="grid grid-2">
-          <div class="field">
-            <label for="dataManutencao">Data da Manutenção</label>
-            <input id="dataManutencao" name="dataManutencao" type="date" required />
-          </div>
-          <div class="field">
-            <label for="cliente">Cliente / Empresa</label>
-            <input id="cliente" name="cliente" type="text" placeholder="Nome do cliente" required />
-          </div>
-          <div class="field">
-            <label for="localServico">Local do Serviço</label>
-            <input id="localServico" name="localServico" type="text" placeholder="Endereço da instalação" />
-          </div>
-          <div class="field">
-            <label for="responsavelTecnico">Responsável Técnico</label>
-            <input id="responsavelTecnico" name="responsavelTecnico" type="text" placeholder="Nome do técnico" required />
-          </div>
+        <div class="field">
+          <label for="dataManutencao">Data da Manutenção</label>
+          <input id="dataManutencao" name="dataManutencao" type="date" required />
+        </div>
+        <div class="field">
+          <label for="cliente">Cliente / Empresa</label>
+          <input id="cliente" name="cliente" type="text" placeholder="Nome do cliente" required />
+        </div>
+        <div class="field">
+          <label for="localServico">Local do Serviço</label>
+          <input id="localServico" name="localServico" type="text" placeholder="Endereço" />
+        </div>
+        <div class="field">
+          <label for="responsavelTecnico">Responsável Técnico</label>
+          <input id="responsavelTecnico" name="responsavelTecnico" type="text" placeholder="Nome do técnico" required />
         </div>
       </section>
 
-      <!-- 2. Dados do Equipamento -->
+      <!-- 02. Dados do Equipamento -->
       <section class="card">
-        <h2 class="section-title"><span>02.</span> Dados do Grupo Gerador</h2>
-        <div class="grid grid-3">
-          <div class="field">
-            <label for="marcaModelo">Marca / Modelo</label>
-            <input id="marcaModelo" name="marcaModelo" type="text" placeholder="Ex: Cummins C150" />
-          </div>
-          <div class="field">
-            <label for="potenciaNominal">Potência Nominal (kVA)</label>
-            <input id="potenciaNominal" name="potenciaNominal" type="text" placeholder="Ex: 150 kVA" />
-          </div>
-          <div class="field">
-            <label for="numeroSerie">Número de Série</label>
-            <input id="numeroSerie" name="numeroSerie" type="text" placeholder="S/N" />
-          </div>
-          <div class="field">
-            <label for="horimetro">Horímetro Atual</label>
-            <input id="horimetro" name="horimetro" type="text" placeholder="Horas" />
-          </div>
-          <div class="field">
-            <label for="combustivel">Combustível</label>
-            <select id="combustivel" name="combustivel">
-              <option value="">Selecione...</option>
-              <option value="Diesel">Diesel</option>
-              <option value="Gás Natural">Gás Natural</option>
-              <option value="Gasolina">Gasolina</option>
-              <option value="Biodiesel">Biodiesel</option>
-            </select>
-          </div>
+        <h2 class="section-title"><span>02.</span> Grupo Gerador</h2>
+        <div class="field">
+          <label for="marcaModelo">Marca / Modelo</label>
+          <input id="marcaModelo" name="marcaModelo" type="text" placeholder="Ex: Cummins C150" />
+        </div>
+        <div class="field">
+          <label for="potenciaNominal">Potência Nominal (kVA)</label>
+          <input id="potenciaNominal" name="potenciaNominal" type="text" placeholder="Ex: 150 kVA" />
+        </div>
+        <div class="field">
+          <label for="numeroSerie">Número de Série</label>
+          <input id="numeroSerie" name="numeroSerie" type="text" placeholder="S/N" />
+        </div>
+        <div class="field">
+          <label for="horimetro">Horímetro (h)</label>
+          <input id="horimetro" name="horimetro" type="text" placeholder="Horas" />
+        </div>
+        <div class="field">
+          <label for="combustivel">Combustível</label>
+          <select id="combustivel" name="combustivel">
+            <option value="">Selecione...</option>
+            <option value="Diesel">Diesel</option>
+            <option value="Gás Natural">Gás Natural</option>
+            <option value="Gasolina">Gasolina</option>
+            <option value="Biodiesel">Biodiesel</option>
+          </select>
         </div>
       </section>
 
-      <!-- 3. Parâmetros Elétricos -->
+      <!-- 03. Parâmetros Elétricos -->
       <section class="card">
         <h2 class="section-title"><span>03.</span> Parâmetros Elétricos</h2>
         <div class="table-wrap">
@@ -373,98 +560,94 @@
             <tbody>
               <tr>
                 <td>Tensão (V)</td>
-                <td data-label="Fase A"><input name="tensaoA" type="text" placeholder="0V" /></td>
-                <td data-label="Fase B"><input name="tensaoB" type="text" placeholder="0V" /></td>
-                <td data-label="Fase C"><input name="tensaoC" type="text" placeholder="0V" /></td>
+                <td><input name="tensaoA" type="text" placeholder="0V" /></td>
+                <td><input name="tensaoB" type="text" placeholder="0V" /></td>
+                <td><input name="tensaoC" type="text" placeholder="0V" /></td>
               </tr>
               <tr>
                 <td>Corrente (A)</td>
-                <td data-label="Fase A"><input name="correnteA" type="text" placeholder="0A" /></td>
-                <td data-label="Fase B"><input name="correnteB" type="text" placeholder="0A" /></td>
-                <td data-label="Fase C"><input name="correnteC" type="text" placeholder="0A" /></td>
+                <td><input name="correnteA" type="text" placeholder="0A" /></td>
+                <td><input name="correnteB" type="text" placeholder="0A" /></td>
+                <td><input name="correnteC" type="text" placeholder="0A" /></td>
               </tr>
               <tr>
                 <td>Frequência (Hz)</td>
-                <td data-label="Fase A"><input name="frequenciaA" type="text" placeholder="60Hz" /></td>
-                <td data-label="Fase B"><input name="frequenciaB" type="text" placeholder="60Hz" /></td>
-                <td data-label="Fase C"><input name="frequenciaC" type="text" placeholder="60Hz" /></td>
+                <td><input name="frequenciaA" type="text" placeholder="60Hz" /></td>
+                <td><input name="frequenciaB" type="text" placeholder="60Hz" /></td>
+                <td><input name="frequenciaC" type="text" placeholder="60Hz" /></td>
               </tr>
               <tr>
                 <td>Potência (kW)</td>
-                <td data-label="Fase A"><input name="potenciaA" type="text" placeholder="0kW" /></td>
-                <td data-label="Fase B"><input name="potenciaB" type="text" placeholder="0kW" /></td>
-                <td data-label="Fase C"><input name="potenciaC" type="text" placeholder="0kW" /></td>
+                <td><input name="potenciaA" type="text" placeholder="0kW" /></td>
+                <td><input name="potenciaB" type="text" placeholder="0kW" /></td>
+                <td><input name="potenciaC" type="text" placeholder="0kW" /></td>
               </tr>
             </tbody>
           </table>
         </div>
       </section>
 
-      <!-- 4. Checklist -->
+      <!-- 04. Checklist -->
       <section class="card">
         <h2 class="section-title"><span>04.</span> Checklist de Manutenção</h2>
         <div class="checklist">
-          <label class="check-item"><input type="checkbox" name="check_inspecao_visual" /> Inspeção visual</label>
-          <label class="check-item"><input type="checkbox" name="check_vazamentos" /> Vazamentos</label>
-          <label class="check-item"><input type="checkbox" name="check_limpeza" /> Limpeza</label>
-          <label class="check-item"><input type="checkbox" name="check_nivel_oleo" /> Nível de óleo</label>
-          <label class="check-item"><input type="checkbox" name="check_troca_oleo" /> Troca de óleo</label>
-          <label class="check-item"><input type="checkbox" name="check_filtros" /> Filtros</label>
-          <label class="check-item"><input type="checkbox" name="check_bateria" /> Bateria</label>
-          <label class="check-item"><input type="checkbox" name="check_sistema_eletrico" /> Sistema elétrico</label>
-          <label class="check-item"><input type="checkbox" name="check_tensao_corrente" /> Grandezas elétricas</label>
-          <label class="check-item"><input type="checkbox" name="check_carga" /> Teste em carga</label>
-          <label class="check-item"><input type="checkbox" name="check_aperto" /> Reaperto</label>
-          <label class="check-item"><input type="checkbox" name="check_radiador" /> Radiador</label>
+          <label class="check-item"><input type="checkbox" name="check_inspecao_visual" /><span>Inspeção visual</span></label>
+          <label class="check-item"><input type="checkbox" name="check_vazamentos" /><span>Vazamentos</span></label>
+          <label class="check-item"><input type="checkbox" name="check_limpeza" /><span>Limpeza</span></label>
+          <label class="check-item"><input type="checkbox" name="check_nivel_oleo" /><span>Nível de óleo</span></label>
+          <label class="check-item"><input type="checkbox" name="check_troca_oleo" /><span>Troca de óleo</span></label>
+          <label class="check-item"><input type="checkbox" name="check_filtros" /><span>Filtros</span></label>
+          <label class="check-item"><input type="checkbox" name="check_bateria" /><span>Bateria</span></label>
+          <label class="check-item"><input type="checkbox" name="check_sistema_eletrico" /><span>Sistema elétrico</span></label>
+          <label class="check-item"><input type="checkbox" name="check_tensao_corrente" /><span>Grandezas elétricas</span></label>
+          <label class="check-item"><input type="checkbox" name="check_carga" /><span>Teste em carga</span></label>
+          <label class="check-item"><input type="checkbox" name="check_aperto" /><span>Reaperto</span></label>
+          <label class="check-item"><input type="checkbox" name="check_radiador" /><span>Radiador</span></label>
         </div>
       </section>
 
-      <!-- 5. Manutenção Corretiva -->
+      <!-- 05. Manutenção Corretiva -->
       <section class="card">
         <h2 class="section-title"><span>05.</span> Manutenção Corretiva</h2>
-        <div class="grid">
-          <div class="field">
-            <label for="falhas">Falhas Identificadas</label>
-            <textarea id="falhas" name="falhas" placeholder="Descreva as anomalias encontradas"></textarea>
-          </div>
-          <div class="field">
-            <label for="servicos">Serviços Executados</label>
-            <textarea id="servicos" name="servicos" placeholder="Descreva as ações tomadas"></textarea>
-          </div>
-          <div class="field">
-            <label for="pecas">Peças Substituídas</label>
-            <textarea id="pecas" name="pecas" placeholder="Liste as peças utilizadas"></textarea>
-          </div>
+        <div class="field">
+          <label for="falhas">Falhas Identificadas</label>
+          <textarea id="falhas" name="falhas" placeholder="Descreva as anomalias"></textarea>
+        </div>
+        <div class="field">
+          <label for="servicos">Serviços Executados</label>
+          <textarea id="servicos" name="servicos" placeholder="Descreva as ações"></textarea>
+        </div>
+        <div class="field">
+          <label for="pecas">Peças Substituídas</label>
+          <textarea id="pecas" name="pecas" placeholder="Liste as peças"></textarea>
         </div>
       </section>
 
-      <!-- 6. Observações -->
+      <!-- 06. Observações -->
       <section class="card">
         <h2 class="section-title"><span>06.</span> Observações Técnicas</h2>
         <div class="field">
-          <textarea id="observacoes" name="observacoes" placeholder="Observações adicionais"></textarea>
+          <label for="observacoes">Notas Adicionais</label>
+          <textarea id="observacoes" name="observacoes" placeholder="Observações"></textarea>
         </div>
       </section>
 
-      <!-- 7. Assinaturas -->
+      <!-- 07. Assinaturas -->
       <section class="card">
-        <h2 class="section-title"><span>07.</span> Validação e Assinaturas</h2>
-        <div class="grid grid-2">
-          <div class="field">
-            <label for="assinaturaTecnico">Responsável Técnico</label>
-            <input id="assinaturaTecnico" name="assinaturaTecnico" type="text" placeholder="Nome completo" />
-          </div>
-          <div class="field">
-            <label for="assinaturaCliente">Representante do Cliente</label>
-            <input id="assinaturaCliente" name="assinaturaCliente" type="text" placeholder="Nome completo" />
-          </div>
+        <h2 class="section-title"><span>07.</span> Assinaturas</h2>
+        <div class="field">
+          <label for="assinaturaTecnico">Responsável Técnico</label>
+          <input id="assinaturaTecnico" name="assinaturaTecnico" type="text" placeholder="Nome completo" />
+        </div>
+        <div class="field">
+          <label for="assinaturaCliente">Representante do Cliente</label>
+          <input id="assinaturaCliente" name="assinaturaCliente" type="text" placeholder="Nome completo" />
         </div>
       </section>
     </form>
 
     <footer class="footer-note">
-      <p>TECNO ACRE - Soluções em Tecnologia Sustentável</p>
-      <p>Sistema de Gestão de Manutenção © 2026</p>
+      <p>TECNO ACRE - Soluções em Tecnologia Sustentável © 2026</p>
     </footer>
   </div>
 
@@ -476,23 +659,21 @@
     const btnInstall = document.getElementById('btnInstall');
     const installBox = document.getElementById('installBox');
     let deferredPrompt = null;
-    let isAppInstalled = false;
 
-    // Detectar se o app já está instalado
+    // Detectar se app está instalado
     if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-      isAppInstalled = true;
       btnInstall.hidden = true;
       installBox.style.display = 'none';
     }
 
-    function showStatus(message, ok = true) {
+    function showStatus(msg, ok = true) {
+      statusBox.textContent = msg;
       statusBox.style.display = 'block';
       statusBox.style.background = ok ? 'rgba(34,197,94,.15)' : 'rgba(239,68,68,.15)';
       statusBox.style.color = ok ? '#b6f7c8' : '#fecaca';
       statusBox.style.borderColor = ok ? 'rgba(34,197,94,.3)' : 'rgba(239,68,68,.4)';
-      statusBox.textContent = message;
       clearTimeout(showStatus.timer);
-      showStatus.timer = setTimeout(() => statusBox.style.display = 'none', 5000);
+      showStatus.timer = setTimeout(() => statusBox.style.display = 'none', 4000);
     }
 
     function getData() {
@@ -524,28 +705,24 @@
       try {
         const saved = localStorage.getItem('tecno_acre_relatorio_gerador');
         if (saved) setData(JSON.parse(saved));
-      } catch(e) {
-        console.error(e);
-      }
+      } catch(e) {}
     }
 
     form.addEventListener('input', saveLocal);
     loadLocal();
 
-    // Botão Exportar Dados (técnico)
     document.getElementById('btnSaveJson').addEventListener('click', () => {
       const data = JSON.stringify(getData(), null, 2);
       const blob = new Blob([data], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `Dados_Manutencao_${getData().cliente || 'Cliente'}.json`;
+      a.download = `Dados_${getData().cliente || 'Cliente'}.json`;
       a.click();
       URL.revokeObjectURL(url);
-      showStatus('Dados exportados com sucesso.');
+      showStatus('Dados exportados.');
     });
 
-    // Botão Importar Dados (técnico)
     fileImport.addEventListener('change', async (e) => {
       const file = e.target.files[0];
       if (!file) return;
@@ -553,25 +730,22 @@
         const text = await file.text();
         setData(JSON.parse(text));
         saveLocal();
-        showStatus('Dados importados com sucesso.');
+        showStatus('Dados importados.');
       } catch (err) {
-        showStatus('Erro ao importar arquivo.', false);
+        showStatus('Erro ao importar.', false);
       }
       fileImport.value = '';
     });
 
-    // Botão Limpar
     document.getElementById('btnClear').addEventListener('click', () => {
-      if (!confirm('Deseja limpar todos os campos?')) return;
+      if (!confirm('Limpar todos os campos?')) return;
       form.reset();
       localStorage.removeItem('tecno_acre_relatorio_gerador');
       showStatus('Formulário limpo.');
     });
 
-    // Botão Imprimir
     document.getElementById('btnPrint').addEventListener('click', () => window.print());
 
-    // Carregar imagem como Data URL
     async function loadImageAsDataURL(src) {
       try {
         const response = await fetch(src);
@@ -585,7 +759,6 @@
       } catch (e) { return null; }
     }
 
-    // Botão Gerar PDF
     document.getElementById('btnPdf').addEventListener('click', async () => {
       try {
         const { jsPDF } = window.jspdf;
@@ -595,7 +768,6 @@
         const margin = 15;
         const width = 180;
 
-        // Header
         const logo = await loadImageAsDataURL('./brand-logo.png');
         if (logo) doc.addImage(logo, 'PNG', margin, y - 5, 25, 25);
         
@@ -711,7 +883,6 @@
         field('Notas', data.observacoes);
         y += 20;
 
-        // Signatures
         if (y > 250) { doc.addPage(); y = 40; }
         doc.line(margin, y, margin + 70, y);
         doc.line(margin + 110, y, margin + 180, y);
@@ -719,15 +890,14 @@
         doc.text(data.assinaturaTecnico || 'Assinatura do Técnico', margin, y + 5);
         doc.text(data.assinaturaCliente || 'Assinatura do Cliente', margin + 110, y + 5);
 
-        doc.save(`Relatorio_Tecnico_${data.cliente || 'TECNO_ACRE'}.pdf`);
-        showStatus('PDF gerado com sucesso!');
+        doc.save(`Relatorio_${data.cliente || 'TECNO_ACRE'}.pdf`);
+        showStatus('PDF gerado!');
       } catch (err) {
         console.error(err);
         showStatus('Erro ao gerar PDF.', false);
       }
     });
 
-    // Lógica de instalação do PWA
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
@@ -740,21 +910,18 @@
       deferredPrompt.prompt();
       const { outcome } = await deferredPrompt.userChoice;
       if (outcome === 'accepted') {
-        isAppInstalled = true;
         btnInstall.hidden = true;
         installBox.style.display = 'none';
-        showStatus('Aplicativo instalado com sucesso!');
+        showStatus('App instalado!');
       }
       deferredPrompt = null;
     });
 
     window.addEventListener('appinstalled', () => {
-      isAppInstalled = true;
       btnInstall.hidden = true;
       installBox.style.display = 'none';
     });
 
-    // Registrar Service Worker
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./service-worker.js').catch(() => {});
     }
