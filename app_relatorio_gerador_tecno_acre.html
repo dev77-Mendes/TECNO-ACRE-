@@ -56,6 +56,7 @@
       border-radius: 12px; font-weight: 700; box-shadow: var(--shadow); font-size: .95rem;
       transition: transform 0.2s, filter 0.2s;
       display: flex; align-items: center; justify-content: center;
+      min-height: 44px;
     }
     button:hover, .file-label:hover { filter: brightness(1.1); transform: translateY(-1px); }
     button:active { transform: translateY(0); }
@@ -63,6 +64,10 @@
     button.ghost { background: #172338; border: 1px solid #2a3a57; }
     button.success { background: linear-gradient(135deg, #16a34a, #22c55e); }
     button:disabled { opacity:.55; cursor:not-allowed; }
+    
+    /* Ocultar botões técnicos por padrão */
+    button.tech-only { display: none !important; }
+    .file-label.tech-only { display: none !important; }
     
     input, textarea, select {
       width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid #2c3a56;
@@ -102,7 +107,7 @@
       transition: background 0.2s;
     }
     .check-item:hover { background: rgba(255,255,255,.06); }
-    .check-item input { width: 20px; height: 20px; accent-color: #22c55e; cursor: pointer; margin: 0; }
+    .check-item input { width: 20px; height: 20px; accent-color: #22c55e; cursor: pointer; margin: 0; flex-shrink: 0; }
     
     .status {
       margin-top: 10px; padding: 14px; border-radius: 12px; background: rgba(34,197,94,.11);
@@ -123,18 +128,135 @@
       .toolbar { justify-content: center; }
     }
 
-    @media (max-width: 640px) {
-      .wrap { padding: 12px; }
-      .topbar { padding: 20px; }
+    @media (max-width: 768px) {
+      .wrap { padding: 16px; }
+      .topbar { padding: 20px; gap: 16px; }
       .headline h1 { font-size: 1.5rem; }
       .card { padding: 18px; }
-      .table-wrap { border: none; }
+      .toolbar { gap: 10px; }
+      button, .file-label { padding: 11px 16px; font-size: 0.9rem; }
+    }
+
+    @media (max-width: 640px) {
+      .wrap { padding: 12px; }
+      .topbar { 
+        grid-template-columns: 1fr; 
+        padding: 16px; 
+        gap: 12px; 
+        border-radius: 16px;
+      }
+      .brand-image { 
+        max-width: 90px; 
+        border-radius: 12px; 
+      }
+      .headline h1 { 
+        font-size: clamp(1.3rem, 5vw, 1.6rem);
+        line-height: 1.2;
+        margin-bottom: 6px;
+      }
+      .headline p { 
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+      .badge {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+        display: block;
+        text-align: center;
+        margin-top: 8px;
+      }
+      .toolbar {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin: 16px 0 20px;
+      }
+      button, .file-label {
+        padding: 12px 12px;
+        font-size: 0.85rem;
+        min-height: 40px;
+        border-radius: 10px;
+      }
+      .install-box {
+        font-size: 0.85rem;
+        padding: 12px;
+        margin-bottom: 16px;
+        line-height: 1.4;
+      }
+      .card { 
+        padding: 16px; 
+        border-radius: 14px;
+        margin-bottom: 12px;
+      }
+      .section-title {
+        font-size: 1.1rem;
+        margin-bottom: 14px;
+      }
+      .field { gap: 6px; }
+      .field label { font-size: 0.9rem; font-weight: 600; }
+      input, textarea, select {
+        font-size: 16px;
+        padding: 11px 12px;
+        border-radius: 10px;
+        min-height: 44px;
+      }
+      textarea { min-height: 90px; }
+      .check-item {
+        padding: 12px;
+        border-radius: 12px;
+        gap: 10px;
+      }
+      .check-item input { width: 18px; height: 18px; }
+      .checklist { gap: 10px; }
+      
+      /* Tabela responsiva para smartphone */
+      .table-wrap { border: none; overflow: visible; }
       table, thead, tbody, tr, th, td { display: block; width: 100%; }
       thead { display: none; }
-      tbody tr { margin-bottom: 16px; padding: 16px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.02); }
-      td { border: none; padding: 8px 0; display: flex; justify-content: space-between; align-items: center; }
-      td::before { content: attr(data-label); font-weight: 700; color: var(--muted); font-size: 0.85rem; }
-      td input { text-align: right; width: 60%; }
+      tbody tr {
+        margin-bottom: 12px;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: rgba(255,255,255,.02);
+      }
+      td {
+        border: none;
+        padding: 8px 0;
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        gap: 8px;
+        align-items: center;
+      }
+      td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: var(--accent-2);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+      }
+      td input {
+        text-align: right;
+        padding: 6px;
+      }
+      .footer-note {
+        font-size: 0.8rem;
+        padding: 0 8px;
+        margin: 24px 0 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .wrap { padding: 8px; }
+      .topbar { padding: 12px; }
+      .headline h1 { font-size: 1.2rem; }
+      .headline p { font-size: 0.85rem; }
+      .card { padding: 14px; }
+      .toolbar { grid-template-columns: 1fr; }
+      button, .file-label { font-size: 0.8rem; padding: 10px; }
+      .section-title { font-size: 1rem; }
+      .field label { font-size: 0.85rem; }
+      input, textarea, select { font-size: 15px; padding: 10px; }
     }
 
     @media print {
@@ -154,24 +276,26 @@
     <header class="topbar">
       <img class="brand-image" src="./brand-logo.png" alt="TECNO ACRE Logo" />
       <div class="headline">
-        <h1>Relatório de Manutenção Técnica</h1>
-        <p>Sistema profissional para registro de manutenções preventivas e corretivas em grupos geradores da <strong>TECNO ACRE - Soluções em Tecnologia Sustentável</strong>.</p>
-        <div class="badge">Interface Profissional v2.0 • Sistema de Gestão de Ativos</div>
+        <h1>Relatório de Manutenção</h1>
+        <p>Sistema de registro de manutenções preventivas e corretivas em grupos geradores da <strong>TECNO ACRE</strong>.</p>
+        <div class="badge">Interface Profissional v2.0</div>
       </div>
     </header>
 
     <div class="toolbar">
-      <button class="success" id="btnPdf">Gerar Relatório PDF</button>
-      <button class="secondary" id="btnPrint">Imprimir Documento</button>
-      <button class="ghost" id="btnSaveJson">Exportar Dados (.json)</button>
-      <label class="file-label ghost" for="fileImport">Importar Dados (.json)</label>
+      <button class="success" id="btnPdf">Gerar PDF</button>
+      <button class="secondary" id="btnPrint">Imprimir</button>
+      <button class="ghost" id="btnClear">Limpar</button>
+      <button class="secondary" id="btnInstall" hidden>Instalar App</button>
+      
+      <!-- Botões técnicos (ocultos para cliente) -->
+      <button class="ghost tech-only" id="btnSaveJson">Exportar Dados</button>
+      <label class="file-label ghost tech-only" for="fileImport">Importar Dados</label>
       <input id="fileImport" type="file" accept="application/json" hidden />
-      <button class="ghost" id="btnClear">Limpar Formulário</button>
-      <button class="secondary" id="btnInstall" hidden>Instalar Aplicativo</button>
     </div>
 
-    <div class="install-box">
-      <strong>Dica de Uso:</strong> Para uma melhor experiência no smartphone, utilize a opção "Adicionar à tela inicial" no seu navegador para instalar este sistema como um aplicativo dedicado.
+    <div class="install-box" id="installBox">
+      <strong>Dica:</strong> Instale este aplicativo na tela inicial do seu smartphone para acesso rápido.
     </div>
 
     <div id="status" class="status"></div>
@@ -187,15 +311,15 @@
           </div>
           <div class="field">
             <label for="cliente">Cliente / Empresa</label>
-            <input id="cliente" name="cliente" type="text" placeholder="Nome do cliente ou razão social" required />
+            <input id="cliente" name="cliente" type="text" placeholder="Nome do cliente" required />
           </div>
           <div class="field">
             <label for="localServico">Local do Serviço</label>
-            <input id="localServico" name="localServico" type="text" placeholder="Endereço completo da instalação" />
+            <input id="localServico" name="localServico" type="text" placeholder="Endereço da instalação" />
           </div>
           <div class="field">
             <label for="responsavelTecnico">Responsável Técnico</label>
-            <input id="responsavelTecnico" name="responsavelTecnico" type="text" placeholder="Nome do técnico executor" required />
+            <input id="responsavelTecnico" name="responsavelTecnico" type="text" placeholder="Nome do técnico" required />
           </div>
         </div>
       </section>
@@ -206,7 +330,7 @@
         <div class="grid grid-3">
           <div class="field">
             <label for="marcaModelo">Marca / Modelo</label>
-            <input id="marcaModelo" name="marcaModelo" type="text" placeholder="Ex: Cummins / C150" />
+            <input id="marcaModelo" name="marcaModelo" type="text" placeholder="Ex: Cummins C150" />
           </div>
           <div class="field">
             <label for="potenciaNominal">Potência Nominal (kVA)</label>
@@ -214,11 +338,11 @@
           </div>
           <div class="field">
             <label for="numeroSerie">Número de Série</label>
-            <input id="numeroSerie" name="numeroSerie" type="text" placeholder="S/N do equipamento" />
+            <input id="numeroSerie" name="numeroSerie" type="text" placeholder="S/N" />
           </div>
           <div class="field">
             <label for="horimetro">Horímetro Atual</label>
-            <input id="horimetro" name="horimetro" type="text" placeholder="Horas de operação" />
+            <input id="horimetro" name="horimetro" type="text" placeholder="Horas" />
           </div>
           <div class="field">
             <label for="combustivel">Combustível</label>
@@ -235,7 +359,7 @@
 
       <!-- 3. Parâmetros Elétricos -->
       <section class="card">
-        <h2 class="section-title"><span>03.</span> Parâmetros Elétricos (Medições)</h2>
+        <h2 class="section-title"><span>03.</span> Parâmetros Elétricos</h2>
         <div class="table-wrap">
           <table>
             <thead>
@@ -278,20 +402,20 @@
 
       <!-- 4. Checklist -->
       <section class="card">
-        <h2 class="section-title"><span>04.</span> Checklist de Manutenção Preventiva</h2>
+        <h2 class="section-title"><span>04.</span> Checklist de Manutenção</h2>
         <div class="checklist">
-          <label class="check-item"><input type="checkbox" name="check_inspecao_visual" /> Inspeção visual geral</label>
-          <label class="check-item"><input type="checkbox" name="check_vazamentos" /> Verificação de vazamentos</label>
-          <label class="check-item"><input type="checkbox" name="check_limpeza" /> Limpeza do equipamento</label>
-          <label class="check-item"><input type="checkbox" name="check_nivel_oleo" /> Nível de óleo lubrificante</label>
-          <label class="check-item"><input type="checkbox" name="check_troca_oleo" /> Troca de óleo executada</label>
-          <label class="check-item"><input type="checkbox" name="check_filtros" /> Verificação/Troca de filtros</label>
-          <label class="check-item"><input type="checkbox" name="check_bateria" /> Teste de carga da bateria</label>
-          <label class="check-item"><input type="checkbox" name="check_sistema_eletrico" /> Inspeção do sistema elétrico</label>
-          <label class="check-item"><input type="checkbox" name="check_tensao_corrente" /> Teste de grandezas elétricas</label>
-          <label class="check-item"><input type="checkbox" name="check_carga" /> Teste de funcionamento em carga</label>
-          <label class="check-item"><input type="checkbox" name="check_aperto" /> Reaperto de conexões</label>
-          <label class="check-item"><input type="checkbox" name="check_radiador" /> Nível de aditivo/radiador</label>
+          <label class="check-item"><input type="checkbox" name="check_inspecao_visual" /> Inspeção visual</label>
+          <label class="check-item"><input type="checkbox" name="check_vazamentos" /> Vazamentos</label>
+          <label class="check-item"><input type="checkbox" name="check_limpeza" /> Limpeza</label>
+          <label class="check-item"><input type="checkbox" name="check_nivel_oleo" /> Nível de óleo</label>
+          <label class="check-item"><input type="checkbox" name="check_troca_oleo" /> Troca de óleo</label>
+          <label class="check-item"><input type="checkbox" name="check_filtros" /> Filtros</label>
+          <label class="check-item"><input type="checkbox" name="check_bateria" /> Bateria</label>
+          <label class="check-item"><input type="checkbox" name="check_sistema_eletrico" /> Sistema elétrico</label>
+          <label class="check-item"><input type="checkbox" name="check_tensao_corrente" /> Grandezas elétricas</label>
+          <label class="check-item"><input type="checkbox" name="check_carga" /> Teste em carga</label>
+          <label class="check-item"><input type="checkbox" name="check_aperto" /> Reaperto</label>
+          <label class="check-item"><input type="checkbox" name="check_radiador" /> Radiador</label>
         </div>
       </section>
 
@@ -300,25 +424,25 @@
         <h2 class="section-title"><span>05.</span> Manutenção Corretiva</h2>
         <div class="grid">
           <div class="field">
-            <label for="falhas">Falhas Identificadas / Diagnóstico</label>
-            <textarea id="falhas" name="falhas" placeholder="Descreva detalhadamente as anomalias encontradas"></textarea>
+            <label for="falhas">Falhas Identificadas</label>
+            <textarea id="falhas" name="falhas" placeholder="Descreva as anomalias encontradas"></textarea>
           </div>
           <div class="field">
             <label for="servicos">Serviços Executados</label>
-            <textarea id="servicos" name="servicos" placeholder="Descreva as ações tomadas para correção"></textarea>
+            <textarea id="servicos" name="servicos" placeholder="Descreva as ações tomadas"></textarea>
           </div>
           <div class="field">
-            <label for="pecas">Peças e Componentes Substituídos</label>
-            <textarea id="pecas" name="pecas" placeholder="Liste as peças utilizadas com código/descrição"></textarea>
+            <label for="pecas">Peças Substituídas</label>
+            <textarea id="pecas" name="pecas" placeholder="Liste as peças utilizadas"></textarea>
           </div>
         </div>
       </section>
 
       <!-- 6. Observações -->
       <section class="card">
-        <h2 class="section-title"><span>06.</span> Observações Técnicas e Recomendações</h2>
+        <h2 class="section-title"><span>06.</span> Observações Técnicas</h2>
         <div class="field">
-          <textarea id="observacoes" name="observacoes" placeholder="Observações adicionais e recomendações para o cliente"></textarea>
+          <textarea id="observacoes" name="observacoes" placeholder="Observações adicionais"></textarea>
         </div>
       </section>
 
@@ -327,20 +451,20 @@
         <h2 class="section-title"><span>07.</span> Validação e Assinaturas</h2>
         <div class="grid grid-2">
           <div class="field">
-            <label for="assinaturaTecnico">Responsável Técnico (Nome Legível)</label>
-            <input id="assinaturaTecnico" name="assinaturaTecnico" type="text" placeholder="Nome completo do técnico" />
+            <label for="assinaturaTecnico">Responsável Técnico</label>
+            <input id="assinaturaTecnico" name="assinaturaTecnico" type="text" placeholder="Nome completo" />
           </div>
           <div class="field">
-            <label for="assinaturaCliente">Representante do Cliente (Nome Legível)</label>
-            <input id="assinaturaCliente" name="assinaturaCliente" type="text" placeholder="Nome do responsável pelo recebimento" />
+            <label for="assinaturaCliente">Representante do Cliente</label>
+            <input id="assinaturaCliente" name="assinaturaCliente" type="text" placeholder="Nome completo" />
           </div>
         </div>
       </section>
     </form>
 
     <footer class="footer-note">
-      <p>TECNO ACRE - Soluções em Tecnologia Sustentável • CNPJ: [Inserir CNPJ] • Contato: [Inserir Contato]</p>
-      <p>Documento gerado eletronicamente via Sistema de Gestão de Manutenção.</p>
+      <p>TECNO ACRE - Soluções em Tecnologia Sustentável</p>
+      <p>Sistema de Gestão de Manutenção © 2026</p>
     </footer>
   </div>
 
@@ -349,7 +473,17 @@
     const form = document.getElementById('reportForm');
     const statusBox = document.getElementById('status');
     const fileImport = document.getElementById('fileImport');
+    const btnInstall = document.getElementById('btnInstall');
+    const installBox = document.getElementById('installBox');
     let deferredPrompt = null;
+    let isAppInstalled = false;
+
+    // Detectar se o app já está instalado
+    if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+      isAppInstalled = true;
+      btnInstall.hidden = true;
+      installBox.style.display = 'none';
+    }
 
     function showStatus(message, ok = true) {
       statusBox.style.display = 'block';
@@ -398,6 +532,7 @@
     form.addEventListener('input', saveLocal);
     loadLocal();
 
+    // Botão Exportar Dados (técnico)
     document.getElementById('btnSaveJson').addEventListener('click', () => {
       const data = JSON.stringify(getData(), null, 2);
       const blob = new Blob([data], { type: 'application/json' });
@@ -410,6 +545,7 @@
       showStatus('Dados exportados com sucesso.');
     });
 
+    // Botão Importar Dados (técnico)
     fileImport.addEventListener('change', async (e) => {
       const file = e.target.files[0];
       if (!file) return;
@@ -424,15 +560,18 @@
       fileImport.value = '';
     });
 
+    // Botão Limpar
     document.getElementById('btnClear').addEventListener('click', () => {
-      if (!confirm('Deseja limpar todos os campos do formulário?')) return;
+      if (!confirm('Deseja limpar todos os campos?')) return;
       form.reset();
       localStorage.removeItem('tecno_acre_relatorio_gerador');
       showStatus('Formulário limpo.');
     });
 
+    // Botão Imprimir
     document.getElementById('btnPrint').addEventListener('click', () => window.print());
 
+    // Carregar imagem como Data URL
     async function loadImageAsDataURL(src) {
       try {
         const response = await fetch(src);
@@ -446,6 +585,7 @@
       } catch (e) { return null; }
     }
 
+    // Botão Gerar PDF
     document.getElementById('btnPdf').addEventListener('click', async () => {
       try {
         const { jsPDF } = window.jspdf;
@@ -513,7 +653,6 @@
 
         section('03. Parâmetros Elétricos');
         doc.setFontSize(9);
-        const tableY = y;
         const colW = width / 4;
         const headers = ['Parâmetro', 'Fase A', 'Fase B', 'Fase C'];
         headers.forEach((h, i) => {
@@ -588,6 +727,34 @@
       }
     });
 
+    // Lógica de instalação do PWA
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      btnInstall.hidden = false;
+      installBox.style.display = 'block';
+    });
+
+    btnInstall.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        isAppInstalled = true;
+        btnInstall.hidden = true;
+        installBox.style.display = 'none';
+        showStatus('Aplicativo instalado com sucesso!');
+      }
+      deferredPrompt = null;
+    });
+
+    window.addEventListener('appinstalled', () => {
+      isAppInstalled = true;
+      btnInstall.hidden = true;
+      installBox.style.display = 'none';
+    });
+
+    // Registrar Service Worker
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./service-worker.js').catch(() => {});
     }
