@@ -1,5 +1,5 @@
 {
-  "name": "Relatório de Gerador TECNO ACRE",
+  "name": "Sistema de Gestão de Manutenção - TECNO ACRE",
   "short_name": "TECNO ACRE",
   "description": "Aplicativo para preenchimento e geração de PDF de relatório de manutenção preventiva e corretiva de geradores da TECNO ACRE.",
   "start_url": "./index.html",

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Relatório de Gerador - TECNO ACRE</title>
+  <title>Relatório de Manutenção de Geradores - TECNO ACRE</title>
   <meta name="theme-color" content="#0f172a" />
   <link rel="manifest" href="./manifest.json" />
   <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96.png" />
@@ -23,81 +23,99 @@
       --radius: 18px;
     }
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; background: linear-gradient(180deg, #08101c, #101827); color: var(--text); }
+    html, body { margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: linear-gradient(180deg, #08101c, #101827); color: var(--text); }
     body { min-height: 100vh; }
-    .wrap { max-width: 1200px; margin: 0 auto; padding: 18px; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 24px; }
     .topbar {
       display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 18px;
+      grid-template-columns: 120px 1fr;
+      gap: 24px;
       align-items: center;
       background: linear-gradient(135deg, #0f172a, #16243a);
       border: 1px solid var(--line);
       border-radius: 22px;
       box-shadow: var(--shadow);
-      padding: 18px;
-      margin-bottom: 18px;
+      padding: 24px;
+      margin-bottom: 24px;
     }
     .brand-image {
-      width: 100%; max-width: 100px; aspect-ratio: 1/1; object-fit: cover;
-      border-radius: 20px; background: #0b0f18; border: 1px solid #1f2e47;
+      width: 100%; max-width: 110px; aspect-ratio: 1/1; object-fit: contain;
+      border-radius: 16px; background: #fff; padding: 8px; border: 1px solid #1f2e47;
       box-shadow: 0 8px 20px rgba(0,0,0,.25);
     }
-    .headline h1 { margin: 0 0 6px; font-size: 1.75rem; }
-    .headline p { margin: 0; color: var(--muted); line-height: 1.45; }
-    .badge { display:inline-block; margin-top: 10px; padding: 6px 10px; border-radius: 999px; background: rgba(41,182,246,.13); color:#8edcff; font-size:.9rem; border:1px solid rgba(41,182,246,.35); }
-    .client-internal { display: none !important; }
+    .headline h1 { margin: 0 0 8px; font-size: 1.85rem; letter-spacing: -0.02em; }
+    .headline p { margin: 0; color: var(--muted); line-height: 1.5; font-size: 1rem; }
+    .badge { display:inline-block; margin-top: 12px; padding: 6px 14px; border-radius: 999px; background: rgba(41,182,246,.1); color:#8edcff; font-size:.85rem; border:1px solid rgba(41,182,246,.3); font-weight: 600; }
+    
     .toolbar {
-      display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 20px;
+      display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0 24px;
     }
     button, .file-label {
       appearance: none; border: 0; cursor: pointer; color: white;
-      background: linear-gradient(135deg, #ff8a00, #ff6a00); padding: 12px 16px;
+      background: linear-gradient(135deg, #ff8a00, #ff6a00); padding: 12px 20px;
       border-radius: 12px; font-weight: 700; box-shadow: var(--shadow); font-size: .95rem;
+      transition: transform 0.2s, filter 0.2s;
+      display: flex; align-items: center; justify-content: center;
     }
+    button:hover, .file-label:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    button:active { transform: translateY(0); }
     button.secondary, .file-label.secondary { background: linear-gradient(135deg, #1d4ed8, #0ea5e9); }
     button.ghost { background: #172338; border: 1px solid #2a3a57; }
     button.success { background: linear-gradient(135deg, #16a34a, #22c55e); }
     button:disabled { opacity:.55; cursor:not-allowed; }
+    
     input, textarea, select {
-      width: 100%; padding: 11px 12px; border-radius: 12px; border: 1px solid #2c3a56;
-      background: #0f172a; color: var(--text); font-size: .98rem; outline: none;
+      width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid #2c3a56;
+      background: #0f172a; color: var(--text); font-size: 1rem; outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    textarea { min-height: 92px; resize: vertical; }
+    textarea { min-height: 100px; resize: vertical; }
     input:focus, textarea:focus, select:focus { border-color: var(--accent-2); box-shadow: 0 0 0 3px rgba(41,182,246,.15); }
-    .grid { display: grid; gap: 16px; }
+    
+    .grid { display: grid; gap: 20px; }
     .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    
     .card {
       background: linear-gradient(180deg, #111b2f, #0e1628);
-      border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow);
+      border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow);
     }
-    .section-title { margin: 0 0 14px; font-size: 1.15rem; color: #fff; }
-    .section-title span { color: var(--accent-2); }
+    .section-title { margin: 0 0 18px; font-size: 1.25rem; color: #fff; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+    .section-title span { color: var(--accent-2); font-size: 1.1rem; opacity: 0.8; }
+    
     .field { display: flex; flex-direction: column; gap: 8px; }
-    .field label { color: #dfe8f5; font-weight: 700; font-size: .96rem; }
-    .table-wrap { overflow-x: auto; }
+    .field label { color: #dfe8f5; font-weight: 600; font-size: .95rem; }
+    
+    .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--line); }
     table { width: 100%; border-collapse: collapse; min-width: 680px; }
-    th, td { padding: 10px; border-bottom: 1px solid #263754; text-align: left; }
-    th { color: #9ddcff; background: rgba(41,182,246,.08); }
+    th, td { padding: 14px; border-bottom: 1px solid #263754; text-align: left; }
+    th { color: #9ddcff; background: rgba(41,182,246,.08); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    td input { background: transparent; border: none; padding: 4px; border-bottom: 1px solid transparent; border-radius: 0; }
+    td input:focus { border-bottom-color: var(--accent-2); box-shadow: none; }
+    
     .checklist {
-      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;
     }
     .check-item {
-      display: flex; gap: 10px; align-items: center; background: rgba(255,255,255,.03);
-      border: 1px solid #21304a; border-radius: 14px; padding: 12px;
+      display: flex; gap: 12px; align-items: center; background: rgba(255,255,255,.03);
+      border: 1px solid #21304a; border-radius: 14px; padding: 14px; cursor: pointer;
+      transition: background 0.2s;
     }
-    .check-item input { width: 18px; height: 18px; accent-color: #22c55e; }
+    .check-item:hover { background: rgba(255,255,255,.06); }
+    .check-item input { width: 20px; height: 20px; accent-color: #22c55e; cursor: pointer; margin: 0; }
+    
     .status {
-      margin-top: 10px; padding: 12px 14px; border-radius: 12px; background: rgba(34,197,94,.11);
-      color: #b6f7c8; border: 1px solid rgba(34,197,94,.25); display:none;
+      margin-top: 10px; padding: 14px; border-radius: 12px; background: rgba(34,197,94,.11);
+      color: #b6f7c8; border: 1px solid rgba(34,197,94,.25); display:none; font-weight: 600;
     }
-    .muted { color: var(--muted); font-size: .92rem; }
-    .footer-note { margin: 22px 0 10px; text-align: center; color: var(--muted); }
+    
     .install-box {
-      margin-top: 12px; padding: 12px 14px; border-radius: 14px; background: rgba(255,138,0,.1);
-      border: 1px solid rgba(255,138,0,.25); color: #ffd6a3;
+      margin-bottom: 24px; padding: 16px; border-radius: 14px; background: rgba(255,138,0,.08);
+      border: 1px solid rgba(255,138,0,.2); color: #ffd6a3; font-size: 0.95rem; line-height: 1.5;
     }
+    
+    .footer-note { margin: 32px 0 16px; text-align: center; color: var(--muted); font-size: 0.9rem; opacity: 0.8; }
+
     @media (max-width: 900px) {
       .grid-2, .grid-3, .checklist { grid-template-columns: 1fr; }
       .topbar { grid-template-columns: 1fr; text-align: center; }
@@ -105,142 +123,18 @@
       .toolbar { justify-content: center; }
     }
 
-
-    /* ===== AJUSTES DE RESPONSIVIDADE PARA SMARTPHONE ===== */
-    img, svg, video, canvas { max-width: 100%; height: auto; }
-    .card, .topbar, .install-box { overflow: hidden; }
-
     @media (max-width: 640px) {
-      html { -webkit-text-size-adjust: 100%; }
-      body { background: #08101c; }
-      .wrap { width: 100%; max-width: 100%; padding: 10px; }
-      .topbar {
-        grid-template-columns: 1fr;
-        gap: 10px;
-        padding: 14px;
-        border-radius: 18px;
-        text-align: center;
-      }
-      .brand-image {
-        width: 100%;
-        max-width: 260px;
-        height: auto;
-        aspect-ratio: auto;
-        object-fit: contain;
-        padding: 10px;
-        border-radius: 16px;
-        background: #fff;
-        margin: 0 auto;
-      }
-      .headline h1 {
-        font-size: clamp(1.05rem, 5.2vw, 1.35rem);
-        line-height: 1.25;
-        word-break: normal;
-      }
-      .headline p {
-        font-size: .92rem;
-      }
-      .badge {
-        width: 100%;
-        font-size: .82rem;
-        line-height: 1.35;
-        white-space: normal;
-      }
-      .toolbar {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 10px;
-        margin: 12px 0 14px;
-      }
-      button, .file-label {
-        width: 100%;
-        min-height: 48px;
-        padding: 13px 14px;
-        font-size: 1rem;
-        border-radius: 14px;
-      }
-      .install-box {
-        font-size: .9rem;
-        line-height: 1.45;
-        padding: 12px;
-        margin-bottom: 12px;
-      }
-      .grid { gap: 12px; }
-      .grid-2, .grid-3, .checklist { grid-template-columns: 1fr !important; }
-      .card {
-        padding: 14px;
-        border-radius: 16px;
-      }
-      .section-title {
-        font-size: 1.05rem;
-        line-height: 1.3;
-      }
-      .field { gap: 6px; }
-      .field label { font-size: .92rem; }
-      input, textarea, select {
-        font-size: 16px;
-        min-height: 46px;
-        padding: 12px;
-        border-radius: 12px;
-      }
-      textarea { min-height: 110px; }
-      .check-item {
-        align-items: flex-start;
-        line-height: 1.35;
-        padding: 12px;
-      }
-      .check-item input {
-        flex: 0 0 20px;
-        width: 20px;
-        height: 20px;
-        margin-top: 1px;
-      }
-
-      /* Tabela vira cards no smartphone para não estourar a largura da tela */
-      .table-wrap { overflow: visible; }
-      table, thead, tbody, tr, th, td { display: block; width: 100%; min-width: 0; }
-      table { min-width: 0; border-collapse: separate; border-spacing: 0; }
+      .wrap { padding: 12px; }
+      .topbar { padding: 20px; }
+      .headline h1 { font-size: 1.5rem; }
+      .card { padding: 18px; }
+      .table-wrap { border: none; }
+      table, thead, tbody, tr, th, td { display: block; width: 100%; }
       thead { display: none; }
-      tbody tr {
-        margin: 0 0 14px;
-        padding: 12px;
-        border: 1px solid #263754;
-        border-radius: 14px;
-        background: rgba(255,255,255,.025);
-      }
-      td {
-        border-bottom: 0;
-        padding: 7px 0;
-      }
-      td:first-child {
-        color: #9ddcff;
-        font-weight: 800;
-        padding-top: 0;
-        margin-bottom: 4px;
-      }
-      td:not(:first-child)::before {
-        content: "";
-        display: block;
-        color: #a9b6c9;
-        font-size: .82rem;
-        font-weight: 700;
-        margin-bottom: 5px;
-      }
-      tr td:nth-child(2)::before { content: "Fase A"; }
-      tr td:nth-child(3)::before { content: "Fase B"; }
-      tr td:nth-child(4)::before { content: "Fase C"; }
-      td input { width: 100%; }
-      .footer-note {
-        font-size: .82rem;
-        padding: 0 8px 12px;
-      }
-    }
-
-    @media (max-width: 380px) {
-      .wrap { padding: 8px; }
-      .card, .topbar { padding: 12px; }
-      .headline h1 { font-size: 1rem; }
-      button, .file-label { font-size: .94rem; }
+      tbody tr { margin-bottom: 16px; padding: 16px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.02); }
+      td { border: none; padding: 8px 0; display: flex; justify-content: space-between; align-items: center; }
+      td::before { content: attr(data-label); font-weight: 700; color: var(--muted); font-size: 0.85rem; }
+      td input { text-align: right; width: 60%; }
     }
 
     @media print {
@@ -248,70 +142,100 @@
       .toolbar, .install-box, .status, .footer-note { display: none !important; }
       .wrap { max-width: 100%; padding: 0; }
       .topbar, .card { box-shadow: none; border: 1px solid #ddd; background: #fff; color: #000; }
-      .headline p, .muted, .field label, .section-title span { color: #333 !important; }
+      .brand-image { filter: grayscale(1); border: 1px solid #ccc; }
+      .headline p, .field label, .section-title, .section-title span { color: #000 !important; }
       input, textarea, select { color: #000; background: #fff; border: 1px solid #bbb; }
-      .check-item { border: 1px solid #ddd; background: #fff; }
+      .check-item { border: 1px solid #ddd; background: #fff; color: #000; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="topbar">
-      <img class="brand-image" src="./brand-logo.png" alt="TECNO ACRE - Soluções em Tecnologia Sustentável" />
+      <img class="brand-image" src="./brand-logo.png" alt="TECNO ACRE Logo" />
       <div class="headline">
-        <h1>RELATÓRIO DE MANUTENÇÃO </h1>
-        <p>Aplicativo gerarador de PDF do relatório de manutenção de geradores da <strong>TECNO ACRE - Soluções em Tecnologia Sustentável</strong>.</p>
-        <div class="badge">Instalar na tela inicial e identidade visual da TECNO ACRE</div>
+        <h1>Relatório de Manutenção Técnica</h1>
+        <p>Sistema profissional para registro de manutenções preventivas e corretivas em grupos geradores da <strong>TECNO ACRE - Soluções em Tecnologia Sustentável</strong>.</p>
+        <div class="badge">Interface Profissional v2.0 • Sistema de Gestão de Ativos</div>
       </div>
     </header>
 
     <div class="toolbar">
-      <button class="success" id="btnPdf">Gerar PDF para Cliente</button>
-      <button class="secondary" id="btnPrint">Imprimir / Salvar como PDF</button>
-      <button class="ghost client-internal" id="btnSaveJson" type="button" aria-hidden="true" tabindex="-1">Salvar Dados (.json)</button>
-      <label class="file-label ghost client-internal" for="fileImport" aria-hidden="true">Carregar Dados (.json)</label>
+      <button class="success" id="btnPdf">Gerar Relatório PDF</button>
+      <button class="secondary" id="btnPrint">Imprimir Documento</button>
+      <button class="ghost" id="btnSaveJson">Exportar Dados (.json)</button>
+      <label class="file-label ghost" for="fileImport">Importar Dados (.json)</label>
       <input id="fileImport" type="file" accept="application/json" hidden />
       <button class="ghost" id="btnClear">Limpar Formulário</button>
-      <button class="secondary" id="btnInstall" hidden>Instalar App</button>
+      <button class="secondary" id="btnInstall" hidden>Instalar Aplicativo</button>
     </div>
 
     <div class="install-box">
-      <strong>Observação importante:</strong> no smartphone, o PDF será salvo normalmente na pasta <strong>Downloads</strong> ou no local escolhido pelo navegador. No Chrome e use <strong>Adicionar à tela inicial</strong> para instalar o app.
+      <strong>Dica de Uso:</strong> Para uma melhor experiência no smartphone, utilize a opção "Adicionar à tela inicial" no seu navegador para instalar este sistema como um aplicativo dedicado.
     </div>
 
     <div id="status" class="status"></div>
 
     <form id="reportForm" class="grid">
-      <section class="card grid grid-2">
-        <div class="field">
-          <label for="dataManutencao">1. Data da manutenção</label>
-          <input id="dataManutencao" name="dataManutencao" type="date" />
-        </div>
-        <div class="field">
-          <label for="cliente">Cliente</label>
-          <input id="cliente" name="cliente" type="text" placeholder="Nome do cliente" />
-        </div>
-        <div class="field">
-          <label for="localServico">Local do serviço</label>
-          <input id="localServico" name="localServico" type="text" placeholder="Endereço ou local da manutenção" />
-        </div>
-        <div class="field">
-          <label for="responsavelTecnico">Responsável técnico</label>
-          <input id="responsavelTecnico" name="responsavelTecnico" type="text" placeholder="Nome do responsável técnico" />
-        </div>
-      </section>
-
-      <section class="card grid grid-3">
-        <h2 class="section-title"><span>2.</span> Dados do Gerador</h2>
-        <div class="field"><label for="marcaModelo">Marca / Modelo</label><input id="marcaModelo" name="marcaModelo" type="text" /></div>
-        <div class="field"><label for="potenciaNominal">Potência nominal (kVA)</label><input id="potenciaNominal" name="potenciaNominal" type="text" /></div>
-        <div class="field"><label for="numeroSerie">Número de série</label><input id="numeroSerie" name="numeroSerie" type="text" /></div>
-        <div class="field"><label for="horimetro">Horímetro</label><input id="horimetro" name="horimetro" type="text" /></div>
-        <div class="field"><label for="combustivel">Combustível utilizado</label><input id="combustivel" name="combustivel" type="text" /></div>
-      </section>
-
+      <!-- 1. Informações Gerais -->
       <section class="card">
-        <h2 class="section-title"><span>3.</span> Parâmetros Elétricos</h2>
+        <h2 class="section-title"><span>01.</span> Informações Gerais</h2>
+        <div class="grid grid-2">
+          <div class="field">
+            <label for="dataManutencao">Data da Manutenção</label>
+            <input id="dataManutencao" name="dataManutencao" type="date" required />
+          </div>
+          <div class="field">
+            <label for="cliente">Cliente / Empresa</label>
+            <input id="cliente" name="cliente" type="text" placeholder="Nome do cliente ou razão social" required />
+          </div>
+          <div class="field">
+            <label for="localServico">Local do Serviço</label>
+            <input id="localServico" name="localServico" type="text" placeholder="Endereço completo da instalação" />
+          </div>
+          <div class="field">
+            <label for="responsavelTecnico">Responsável Técnico</label>
+            <input id="responsavelTecnico" name="responsavelTecnico" type="text" placeholder="Nome do técnico executor" required />
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Dados do Equipamento -->
+      <section class="card">
+        <h2 class="section-title"><span>02.</span> Dados do Grupo Gerador</h2>
+        <div class="grid grid-3">
+          <div class="field">
+            <label for="marcaModelo">Marca / Modelo</label>
+            <input id="marcaModelo" name="marcaModelo" type="text" placeholder="Ex: Cummins / C150" />
+          </div>
+          <div class="field">
+            <label for="potenciaNominal">Potência Nominal (kVA)</label>
+            <input id="potenciaNominal" name="potenciaNominal" type="text" placeholder="Ex: 150 kVA" />
+          </div>
+          <div class="field">
+            <label for="numeroSerie">Número de Série</label>
+            <input id="numeroSerie" name="numeroSerie" type="text" placeholder="S/N do equipamento" />
+          </div>
+          <div class="field">
+            <label for="horimetro">Horímetro Atual</label>
+            <input id="horimetro" name="horimetro" type="text" placeholder="Horas de operação" />
+          </div>
+          <div class="field">
+            <label for="combustivel">Combustível</label>
+            <select id="combustivel" name="combustivel">
+              <option value="">Selecione...</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Gás Natural">Gás Natural</option>
+              <option value="Gasolina">Gasolina</option>
+              <option value="Biodiesel">Biodiesel</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Parâmetros Elétricos -->
+      <section class="card">
+        <h2 class="section-title"><span>03.</span> Parâmetros Elétricos (Medições)</h2>
         <div class="table-wrap">
           <table>
             <thead>
@@ -325,87 +249,99 @@
             <tbody>
               <tr>
                 <td>Tensão (V)</td>
-                <td><input name="tensaoA" type="text" /></td>
-                <td><input name="tensaoB" type="text" /></td>
-                <td><input name="tensaoC" type="text" /></td>
+                <td data-label="Fase A"><input name="tensaoA" type="text" placeholder="0V" /></td>
+                <td data-label="Fase B"><input name="tensaoB" type="text" placeholder="0V" /></td>
+                <td data-label="Fase C"><input name="tensaoC" type="text" placeholder="0V" /></td>
               </tr>
               <tr>
                 <td>Corrente (A)</td>
-                <td><input name="correnteA" type="text" /></td>
-                <td><input name="correnteB" type="text" /></td>
-                <td><input name="correnteC" type="text" /></td>
+                <td data-label="Fase A"><input name="correnteA" type="text" placeholder="0A" /></td>
+                <td data-label="Fase B"><input name="correnteB" type="text" placeholder="0A" /></td>
+                <td data-label="Fase C"><input name="correnteC" type="text" placeholder="0A" /></td>
               </tr>
               <tr>
                 <td>Frequência (Hz)</td>
-                <td><input name="frequenciaA" type="text" /></td>
-                <td><input name="frequenciaB" type="text" /></td>
-                <td><input name="frequenciaC" type="text" /></td>
+                <td data-label="Fase A"><input name="frequenciaA" type="text" placeholder="60Hz" /></td>
+                <td data-label="Fase B"><input name="frequenciaB" type="text" placeholder="60Hz" /></td>
+                <td data-label="Fase C"><input name="frequenciaC" type="text" placeholder="60Hz" /></td>
               </tr>
               <tr>
                 <td>Potência (kW)</td>
-                <td><input name="potenciaA" type="text" /></td>
-                <td><input name="potenciaB" type="text" /></td>
-                <td><input name="potenciaC" type="text" /></td>
+                <td data-label="Fase A"><input name="potenciaA" type="text" placeholder="0kW" /></td>
+                <td data-label="Fase B"><input name="potenciaB" type="text" placeholder="0kW" /></td>
+                <td data-label="Fase C"><input name="potenciaC" type="text" placeholder="0kW" /></td>
               </tr>
             </tbody>
           </table>
         </div>
       </section>
 
+      <!-- 4. Checklist -->
       <section class="card">
-        <h2 class="section-title"><span>4.</span> Checklist de Manutenção Preventiva</h2>
+        <h2 class="section-title"><span>04.</span> Checklist de Manutenção Preventiva</h2>
         <div class="checklist">
-          <label class="check-item"><input type="checkbox" name="check_inspecao_visual" /> Inspeção visual geral do gerador</label>
+          <label class="check-item"><input type="checkbox" name="check_inspecao_visual" /> Inspeção visual geral</label>
           <label class="check-item"><input type="checkbox" name="check_vazamentos" /> Verificação de vazamentos</label>
           <label class="check-item"><input type="checkbox" name="check_limpeza" /> Limpeza do equipamento</label>
-          <label class="check-item"><input type="checkbox" name="check_nivel_oleo" /> Verificação do nível de óleo</label>
-          <label class="check-item"><input type="checkbox" name="check_troca_oleo" /> Troca de óleo lubrificante</label>
-          <label class="check-item"><input type="checkbox" name="check_filtros" /> Verificação dos filtros</label>
-          <label class="check-item"><input type="checkbox" name="check_bateria" /> Teste da bateria</label>
-          <label class="check-item"><input type="checkbox" name="check_sistema_eletrico" /> Verificação do sistema elétrico</label>
-          <label class="check-item"><input type="checkbox" name="check_tensao_corrente" /> Teste de tensão e corrente elétrica</label>
+          <label class="check-item"><input type="checkbox" name="check_nivel_oleo" /> Nível de óleo lubrificante</label>
+          <label class="check-item"><input type="checkbox" name="check_troca_oleo" /> Troca de óleo executada</label>
+          <label class="check-item"><input type="checkbox" name="check_filtros" /> Verificação/Troca de filtros</label>
+          <label class="check-item"><input type="checkbox" name="check_bateria" /> Teste de carga da bateria</label>
+          <label class="check-item"><input type="checkbox" name="check_sistema_eletrico" /> Inspeção do sistema elétrico</label>
+          <label class="check-item"><input type="checkbox" name="check_tensao_corrente" /> Teste de grandezas elétricas</label>
           <label class="check-item"><input type="checkbox" name="check_carga" /> Teste de funcionamento em carga</label>
-          <label class="check-item"><input type="checkbox" name="check_aperto" /> Aperto de conexões elétricas</label>
+          <label class="check-item"><input type="checkbox" name="check_aperto" /> Reaperto de conexões</label>
+          <label class="check-item"><input type="checkbox" name="check_radiador" /> Nível de aditivo/radiador</label>
         </div>
       </section>
 
-      <section class="card grid grid-1">
-        <h2 class="section-title"><span>5.</span> Manutenção Corretiva</h2>
-        <div class="field">
-          <label for="falhas">Falhas identificadas</label>
-          <textarea id="falhas" name="falhas" placeholder="Descreva as falhas identificadas"></textarea>
-        </div>
-        <div class="field">
-          <label for="servicos">Serviços executados</label>
-          <textarea id="servicos" name="servicos" placeholder="Descreva os serviços executados"></textarea>
-        </div>
-        <div class="field">
-          <label for="pecas">Peças substituídas</label>
-          <textarea id="pecas" name="pecas" placeholder="Liste as peças substituídas"></textarea>
-        </div>
-      </section>
-
-      <section class="card grid grid-2">
-        <h2 class="section-title"><span>6.</span> Observações Técnicas</h2>
-        <div class="field" style="grid-column:1/-1;">
-          <textarea id="observacoes" name="observacoes" placeholder="Observações técnicas adicionais"></textarea>
+      <!-- 5. Manutenção Corretiva -->
+      <section class="card">
+        <h2 class="section-title"><span>05.</span> Manutenção Corretiva</h2>
+        <div class="grid">
+          <div class="field">
+            <label for="falhas">Falhas Identificadas / Diagnóstico</label>
+            <textarea id="falhas" name="falhas" placeholder="Descreva detalhadamente as anomalias encontradas"></textarea>
+          </div>
+          <div class="field">
+            <label for="servicos">Serviços Executados</label>
+            <textarea id="servicos" name="servicos" placeholder="Descreva as ações tomadas para correção"></textarea>
+          </div>
+          <div class="field">
+            <label for="pecas">Peças e Componentes Substituídos</label>
+            <textarea id="pecas" name="pecas" placeholder="Liste as peças utilizadas com código/descrição"></textarea>
+          </div>
         </div>
       </section>
 
-      <section class="card grid grid-2">
-        <h2 class="section-title"><span>7.</span> Assinaturas</h2>
+      <!-- 6. Observações -->
+      <section class="card">
+        <h2 class="section-title"><span>06.</span> Observações Técnicas e Recomendações</h2>
         <div class="field">
-          <label for="assinaturaTecnico">Responsável Técnico</label>
-          <input id="assinaturaTecnico" name="assinaturaTecnico" type="text" placeholder="Nome para assinatura" />
+          <textarea id="observacoes" name="observacoes" placeholder="Observações adicionais e recomendações para o cliente"></textarea>
         </div>
-        <div class="field">
-          <label for="assinaturaCliente">Cliente</label>
-          <input id="assinaturaCliente" name="assinaturaCliente" type="text" placeholder="Nome do cliente para assinatura" />
+      </section>
+
+      <!-- 7. Assinaturas -->
+      <section class="card">
+        <h2 class="section-title"><span>07.</span> Validação e Assinaturas</h2>
+        <div class="grid grid-2">
+          <div class="field">
+            <label for="assinaturaTecnico">Responsável Técnico (Nome Legível)</label>
+            <input id="assinaturaTecnico" name="assinaturaTecnico" type="text" placeholder="Nome completo do técnico" />
+          </div>
+          <div class="field">
+            <label for="assinaturaCliente">Representante do Cliente (Nome Legível)</label>
+            <input id="assinaturaCliente" name="assinaturaCliente" type="text" placeholder="Nome do responsável pelo recebimento" />
+          </div>
         </div>
       </section>
     </form>
 
-    <p class="footer-note">TECNO ACRE - Soluções em Tecnologia Sustentável • Aplicativo desenvolvido para preenchimento rápido e emissão de PDF.</p>
+    <footer class="footer-note">
+      <p>TECNO ACRE - Soluções em Tecnologia Sustentável • CNPJ: [Inserir CNPJ] • Contato: [Inserir Contato]</p>
+      <p>Documento gerado eletronicamente via Sistema de Gestão de Manutenção.</p>
+    </footer>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
@@ -417,9 +353,9 @@
 
     function showStatus(message, ok = true) {
       statusBox.style.display = 'block';
-      statusBox.style.background = ok ? 'rgba(34,197,94,.11)' : 'rgba(239,68,68,.12)';
+      statusBox.style.background = ok ? 'rgba(34,197,94,.15)' : 'rgba(239,68,68,.15)';
       statusBox.style.color = ok ? '#b6f7c8' : '#fecaca';
-      statusBox.style.borderColor = ok ? 'rgba(34,197,94,.25)' : 'rgba(239,68,68,.3)';
+      statusBox.style.borderColor = ok ? 'rgba(34,197,94,.3)' : 'rgba(239,68,68,.4)';
       statusBox.textContent = message;
       clearTimeout(showStatus.timer);
       showStatus.timer = setTimeout(() => statusBox.style.display = 'none', 5000);
@@ -462,44 +398,19 @@
     form.addEventListener('input', saveLocal);
     loadLocal();
 
-    async function saveBlobWithPicker(blob, suggestedName) {
-      if ('showSaveFilePicker' in window) {
-        const handle = await window.showSaveFilePicker({
-          suggestedName,
-          types: [{
-            description: 'Arquivos compatíveis',
-            accept: { [blob.type || 'application/octet-stream']: [suggestedName.slice(suggestedName.lastIndexOf('.'))] }
-          }]
-        });
-        const writable = await handle.createWritable();
-        await writable.write(blob);
-        await writable.close();
-        return true;
-      }
-      return false;
-    }
-
-    const btnSaveJson = document.getElementById('btnSaveJson');
-    if (btnSaveJson) btnSaveJson.addEventListener('click', async () => {
+    document.getElementById('btnSaveJson').addEventListener('click', () => {
       const data = JSON.stringify(getData(), null, 2);
       const blob = new Blob([data], { type: 'application/json' });
-      const suggestedName = `Relatorio_Gerador_Tecno_Acre_${(getData().cliente || 'Cliente').replace(/\s+/g,'_')}.json`;
-      try {
-        const saved = await saveBlobWithPicker(blob, suggestedName);
-        if (!saved) {
-          const a = document.createElement('a');
-          a.href = URL.createObjectURL(blob);
-          a.download = suggestedName;
-          a.click();
-          URL.revokeObjectURL(a.href);
-        }
-        showStatus('Dados salvos com sucesso. Escolha a Área de Trabalho na janela do navegador, se desejar.');
-      } catch (err) {
-        showStatus('Operação de salvar cancelada ou não suportada pelo navegador.', false);
-      }
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Dados_Manutencao_${getData().cliente || 'Cliente'}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showStatus('Dados exportados com sucesso.');
     });
 
-    if (fileImport) fileImport.addEventListener('change', async (e) => {
+    fileImport.addEventListener('change', async (e) => {
       const file = e.target.files[0];
       if (!file) return;
       try {
@@ -508,7 +419,7 @@
         saveLocal();
         showStatus('Dados importados com sucesso.');
       } catch (err) {
-        showStatus('Não foi possível importar o arquivo JSON.', false);
+        showStatus('Erro ao importar arquivo.', false);
       }
       fileImport.value = '';
     });
@@ -517,141 +428,100 @@
       if (!confirm('Deseja limpar todos os campos do formulário?')) return;
       form.reset();
       localStorage.removeItem('tecno_acre_relatorio_gerador');
-      showStatus('Formulário limpo com sucesso.');
+      showStatus('Formulário limpo.');
     });
 
     document.getElementById('btnPrint').addEventListener('click', () => window.print());
 
-    function formatDate(dateStr) {
-      if (!dateStr) return '-';
-      const [y,m,d] = dateStr.split('-');
-      return `${d}/${m}/${y}`;
-    }
-
-    function checklistLines(data) {
-      const items = [
-        ['Inspeção visual geral do gerador', data.check_inspecao_visual],
-        ['Verificação de vazamentos', data.check_vazamentos],
-        ['Limpeza do equipamento', data.check_limpeza],
-        ['Verificação do nível de óleo', data.check_nivel_oleo],
-        ['Troca de óleo lubrificante', data.check_troca_oleo],
-        ['Verificação dos filtros', data.check_filtros],
-        ['Teste da bateria', data.check_bateria],
-        ['Verificação do sistema elétrico', data.check_sistema_eletrico],
-        ['Teste de tensão e corrente elétrica', data.check_tensao_corrente],
-        ['Teste de funcionamento em carga', data.check_carga],
-        ['Aperto de conexões elétricas', data.check_aperto]
-      ];
-      return items.map(([label, checked]) => `${checked ? '[X]' : '[ ]'} ${label}`);
-    }
-
     async function loadImageAsDataURL(src) {
-      const response = await fetch(src);
-      const blob = await response.blob();
-      return await new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onloadend = () => resolve(reader.result);
-        reader.onerror = reject;
-        reader.readAsDataURL(blob);
-      });
+      try {
+        const response = await fetch(src);
+        const blob = await response.blob();
+        return await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(blob);
+        });
+      } catch (e) { return null; }
     }
 
-    document.getElementById('btnPdf').addEventListener('click', generatePdf);
-
-    async function generatePdf() {
+    document.getElementById('btnPdf').addEventListener('click', async () => {
       try {
-        if (!window.jspdf || !window.jspdf.jsPDF) {
-          showStatus('Biblioteca de PDF não carregada. Use o botão Imprimir / Salvar como PDF.', false);
-          return;
-        }
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF({ unit: 'mm', format: 'a4' });
         const data = getData();
-        const margin = 14;
-        const pageWidth = 210;
-        const contentWidth = pageWidth - margin * 2;
-        let y = 16;
+        let y = 20;
+        const margin = 15;
+        const width = 180;
 
-        const logo = await loadImageAsDataURL('./brand-logo.png').catch(() => null);
-        if (logo) {
-          doc.addImage(logo, 'PNG', margin, y, 26, 26);
-        }
+        // Header
+        const logo = await loadImageAsDataURL('./brand-logo.png');
+        if (logo) doc.addImage(logo, 'PNG', margin, y - 5, 25, 25);
+        
         doc.setFont('helvetica', 'bold');
-        doc.setFontSize(15);
-        doc.text('RELATÓRIO DE MANUTENÇÃO PREVENTIVA / CORRETIVA', margin + 32, y + 8, { maxWidth: 145 });
-        doc.setFontSize(12);
-        doc.setTextColor(40, 40, 40);
-        doc.text('TECNO ACRE - Soluções em Tecnologia Sustentável', margin + 32, y + 16);
+        doc.setFontSize(16);
+        doc.setTextColor(15, 23, 42);
+        doc.text('RELATÓRIO TÉCNICO DE MANUTENÇÃO', margin + 30, y + 5);
+        doc.setFontSize(10);
+        doc.setTextColor(100);
+        doc.text('TECNO ACRE - Soluções em Tecnologia Sustentável', margin + 30, y + 12);
+        
         doc.setDrawColor(255, 138, 0);
-        doc.setLineWidth(0.6);
-        doc.line(margin, y + 30, pageWidth - margin, y + 30);
-        y += 38;
-
-        function newPageIfNeeded(extra = 8) {
-          if (y + extra > 280) {
-            doc.addPage();
-            y = 18;
-          }
-        }
+        doc.setLineWidth(0.5);
+        doc.line(margin, y + 20, margin + width, y + 20);
+        y += 30;
 
         function section(title) {
-          newPageIfNeeded(14);
+          if (y > 260) { doc.addPage(); y = 20; }
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(12);
           doc.setTextColor(15, 23, 42);
-          doc.setFont('helvetica', 'bold');
-          doc.setFontSize(12.5);
-          doc.text(title, margin, y);
-          y += 6.5;
+          doc.setFillColor(240, 245, 250);
+          doc.rect(margin, y - 5, width, 8, 'F');
+          doc.text(title.toUpperCase(), margin + 2, y);
+          y += 10;
         }
 
-        function kv(label, value) {
-          newPageIfNeeded(8);
+        function field(label, value) {
+          if (y > 275) { doc.addPage(); y = 20; }
           doc.setFont('helvetica', 'bold');
-          doc.setFontSize(10.5);
+          doc.setFontSize(10);
+          doc.setTextColor(60);
           doc.text(`${label}:`, margin, y);
           doc.setFont('helvetica', 'normal');
-          const lines = doc.splitTextToSize(String(value || '-'), contentWidth - 44);
-          doc.text(lines, margin + 44, y);
-          y += Math.max(6, lines.length * 5.2);
+          doc.setTextColor(0);
+          const lines = doc.splitTextToSize(String(value || 'N/A'), width - 45);
+          doc.text(lines, margin + 45, y);
+          y += Math.max(6, lines.length * 5);
         }
 
-        function multiline(label, value) {
-          newPageIfNeeded(12);
-          doc.setFont('helvetica', 'bold');
-          doc.text(`${label}:`, margin, y);
-          y += 5.2;
-          doc.setFont('helvetica', 'normal');
-          const lines = doc.splitTextToSize(String(value || '-'), contentWidth);
-          doc.text(lines, margin, y);
-          y += Math.max(8, lines.length * 5.2 + 2);
-        }
+        section('01. Informações Gerais');
+        field('Data', data.dataManutencao ? new Date(data.dataManutencao).toLocaleDateString('pt-BR') : '-');
+        field('Cliente', data.cliente);
+        field('Local', data.localServico);
+        field('Técnico', data.responsavelTecnico);
+        y += 5;
 
-        section('1. Informações Gerais');
-        kv('Data da manutenção', formatDate(data.dataManutencao));
-        kv('Cliente', data.cliente);
-        kv('Local do serviço', data.localServico);
-        kv('Responsável técnico', data.responsavelTecnico);
+        section('02. Dados do Equipamento');
+        field('Marca/Modelo', data.marcaModelo);
+        field('Potência', data.potenciaNominal);
+        field('Série', data.numeroSerie);
+        field('Horímetro', data.horimetro);
+        field('Combustível', data.combustivel);
+        y += 5;
 
-        section('2. Dados do Gerador');
-        kv('Marca / Modelo', data.marcaModelo);
-        kv('Potência nominal (kVA)', data.potenciaNominal);
-        kv('Número de série', data.numeroSerie);
-        kv('Horímetro', data.horimetro);
-        kv('Combustível utilizado', data.combustivel);
-
-        section('3. Parâmetros Elétricos');
-        newPageIfNeeded(36);
-        doc.setFont('helvetica', 'bold');
-        const startX = margin;
-        const cols = [58, 38, 38, 38];
+        section('03. Parâmetros Elétricos');
+        doc.setFontSize(9);
+        const tableY = y;
+        const colW = width / 4;
         const headers = ['Parâmetro', 'Fase A', 'Fase B', 'Fase C'];
-        let x = startX;
         headers.forEach((h, i) => {
-          doc.rect(x, y, cols[i], 8);
-          doc.text(h, x + 2, y + 5.4);
-          x += cols[i];
+          doc.setFillColor(230);
+          doc.rect(margin + (i * colW), y, colW, 7, 'F');
+          doc.text(h, margin + (i * colW) + 2, y + 5);
         });
-        y += 8;
-        doc.setFont('helvetica', 'normal');
+        y += 7;
         const rows = [
           ['Tensão (V)', data.tensaoA, data.tensaoB, data.tensaoC],
           ['Corrente (A)', data.correnteA, data.correnteB, data.correnteC],
@@ -659,70 +529,68 @@
           ['Potência (kW)', data.potenciaA, data.potenciaB, data.potenciaC]
         ];
         rows.forEach(r => {
-          let rx = startX;
-          r.forEach((cell, i) => {
-            doc.rect(rx, y, cols[i], 8);
-            doc.text(String(cell || '-'), rx + 2, y + 5.4, { maxWidth: cols[i] - 4 });
-            rx += cols[i];
+          r.forEach((c, i) => {
+            doc.rect(margin + (i * colW), y, colW, 7);
+            doc.text(String(c || '-'), margin + (i * colW) + 2, y + 5);
           });
-          y += 8;
+          y += 7;
         });
-        y += 4;
+        y += 10;
 
-        section('4. Checklist de Manutenção Preventiva');
-        checklistLines(data).forEach(line => {
-          multiline('', line);
+        section('04. Checklist de Manutenção');
+        const checks = [
+          ['Inspeção Visual', data.check_inspecao_visual],
+          ['Vazamentos', data.check_vazamentos],
+          ['Limpeza', data.check_limpeza],
+          ['Nível de Óleo', data.check_nivel_oleo],
+          ['Troca de Óleo', data.check_troca_oleo],
+          ['Filtros', data.check_filtros],
+          ['Bateria', data.check_bateria],
+          ['Sist. Elétrico', data.check_sistema_eletrico],
+          ['Grandezas Elét.', data.check_tensao_corrente],
+          ['Teste em Carga', data.check_carga],
+          ['Reaperto', data.check_aperto],
+          ['Radiador', data.check_radiador]
+        ];
+        
+        let cx = margin;
+        checks.forEach((c, i) => {
+          if (i % 2 === 0 && i !== 0) { y += 6; cx = margin; }
+          doc.setFont('helvetica', c[1] ? 'bold' : 'normal');
+          doc.text(`${c[1] ? '[X]' : '[ ]'} ${c[0]}`, cx, y);
+          cx += width / 2;
         });
+        y += 12;
 
-        section('5. Manutenção Corretiva');
-        multiline('Falhas identificadas', data.falhas);
-        multiline('Serviços executados', data.servicos);
-        multiline('Peças substituídas', data.pecas);
+        section('05. Manutenção Corretiva');
+        field('Falhas', data.falhas);
+        field('Serviços', data.servicos);
+        field('Peças', data.pecas);
+        y += 5;
 
-        section('6. Observações Técnicas');
-        multiline('Observações', data.observacoes);
+        section('06. Observações');
+        field('Notas', data.observacoes);
+        y += 20;
 
-        section('7. Assinaturas');
-        newPageIfNeeded(28);
-        doc.line(margin, y + 14, margin + 75, y + 14);
-        doc.line(pageWidth - margin - 75, y + 14, pageWidth - margin, y + 14);
-        doc.setFont('helvetica', 'normal');
-        doc.text(data.assinaturaTecnico || 'Responsável Técnico', margin, y + 20);
-        doc.text(data.assinaturaCliente || 'Cliente', pageWidth - margin - 75, y + 20);
-        y += 30;
-
+        // Signatures
+        if (y > 250) { doc.addPage(); y = 40; }
+        doc.line(margin, y, margin + 70, y);
+        doc.line(margin + 110, y, margin + 180, y);
         doc.setFontSize(9);
-        doc.setTextColor(110,110,110);
-        doc.text('Documento gerado pelo aplicativo de relatório da TECNO ACRE.', margin, 290);
+        doc.text(data.assinaturaTecnico || 'Assinatura do Técnico', margin, y + 5);
+        doc.text(data.assinaturaCliente || 'Assinatura do Cliente', margin + 110, y + 5);
 
-        const filename = `Relatorio_Gerador_Tecno_Acre_${(data.cliente || 'Cliente').replace(/\s+/g, '_')}.pdf`;
-        const blob = doc.output('blob');
-        const saved = await saveBlobWithPicker(blob, filename).catch(() => false);
-        if (!saved) doc.save(filename);
-        showStatus('PDF gerado com sucesso. Se aparecer a janela do navegador, selecione a Área de Trabalho para salvar.');
+        doc.save(`Relatorio_Tecnico_${data.cliente || 'TECNO_ACRE'}.pdf`);
+        showStatus('PDF gerado com sucesso!');
       } catch (err) {
         console.error(err);
-        showStatus('Não foi possível gerar o PDF. Tente usar o botão Imprimir / Salvar como PDF.', false);
+        showStatus('Erro ao gerar PDF.', false);
       }
-    }
-
-    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
-      navigator.serviceWorker.register('./service-worker.js').catch(console.error);
-    }
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      document.getElementById('btnInstall').hidden = false;
     });
 
-    document.getElementById('btnInstall').addEventListener('click', async () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      await deferredPrompt.userChoice;
-      deferredPrompt = null;
-      document.getElementById('btnInstall').hidden = true;
-    });
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./service-worker.js').catch(() => {});
+    }
   </script>
 </body>
 </html>
